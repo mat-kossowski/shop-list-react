@@ -1,0 +1,36 @@
+.products {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    display: inline-block;
+    background: #f4f4f4;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+.one-product {
+
+}
+
+.name-product {
+    width: 60%;
+    margin-left: 5px;
+    text-align: left;
+    float: left;
+}
+
+.amount-product {
+    float: left;
+    width: 20%;
+}
+
+.delete-product {
+    text-align: right;
+    margin-right: 20px;
+    float: left;
+    width: 10%;
+}
