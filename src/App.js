@@ -21,13 +21,13 @@ const App = () => {
 
     // Fetch Tasks
     const fetchProducts = async () => {
-        const res = await fetch('http://localhost:8080/products')
+        const res = await fetch('https://listazakupow.alwaysdata.net/products')
         const data = await res.json()
         return data
     }
     // Fetch Product
     const fetchProduct = async (id) => {
-        const res = await fetch(`http://localhost:8080/product/${id}`)
+        const res = await fetch(`https://listazakupow.alwaysdata.net/product/${id}`)
         const data = await res.json()
 
         return data
@@ -46,13 +46,13 @@ const App = () => {
     }
     // Add Task
     const addProduct = async (product) => {
-        const res = await fetch('http://localhost:8080/product/new', {
+        const res = await fetch('https://listazakupow.alwaysdata.net/product/new', {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
-                'Access-Control-Allow-Credentials': 'true'
+                'Access-Control-Allow-Origin' : '*'
+
             },
 
             body: JSON.stringify(product),
@@ -62,7 +62,7 @@ const App = () => {
     }
     // Delete Task
     const deleteProduct = async (id) => {
-        const res = await fetch(`http://localhost:8080/products/${id}`, {
+        const res = await fetch(`https://listazakupow.alwaysdata.net/products/${id}`, {
             method: 'DELETE',
         })
         // We should control the response status to decide if we will change the state or not.
@@ -75,12 +75,10 @@ const App = () => {
     const toggleStatus = async (id) => {
         const productToToggle = await fetchProduct(id)
         const updProduct = {...productToToggle, productStatus: !productToToggle.productStatus}
-        const res = await fetch(`http://localhost:8080/product/status/${id}`, {
+        const res = await fetch(`https://listazakupow.alwaysdata.net/product/status/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
-                'Access-Control-Allow-Credentials': 'true'
+                'Content-type': 'application/json'
             },
             body: JSON.stringify(updProduct),
         })
