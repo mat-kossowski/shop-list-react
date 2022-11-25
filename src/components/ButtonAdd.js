@@ -6,7 +6,7 @@ const location = useLocation()
     return (
         <div className={"button"}>
 
-            {location.pathname === '/' && (
+            {location.pathname === '/home' && (
         <ButtonB
           color={showAdd ? 'red' : '#858080'}
           text={showAdd ? 'Close' : 'Add'}

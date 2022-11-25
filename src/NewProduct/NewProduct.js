@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 const NewProduct = ({onAdd})=> {
     const [productName, setName] = useState('')
     const [productAmount, setAmount] = useState('')
+    const [shopListId, setShopListId] = useState(1)
 
 const onSubmit = (e) => {
     e.preventDefault()
@@ -12,11 +13,11 @@ const onSubmit = (e) => {
       return
     }
 
-    onAdd({ productName, productAmount })
+    onAdd({ productName, productAmount, "shopList": {shopListId }})
 
     setName('')
     setAmount('')
-
+    setShopListId(1)
   }
 
     return (
