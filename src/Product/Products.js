@@ -3,6 +3,9 @@ import './product.css';
 
 const Products = ({products, onDelete, onToggle}) => {
 
+
+
+
     return (
         <div className={"products"}>
 

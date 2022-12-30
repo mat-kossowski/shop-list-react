@@ -1,63 +1,67 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {Link} from "react-router-dom";
+import AuthService from "../auth.service";
+import {useAuth} from "../ProtectedRoutes/auth";
 
+import {useNavigate, useLocation} from "react-router-dom";
+import signImage from "../image/key.png";
 
+export default function Login({toggleForm}) {
 
+    const auth = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const redirectPath = location.state?.path || '/'
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
-export default function Login() {
-
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-
-    const submitForm =(event) =>{
+    const submitForm = (event) => {
         event.preventDefault()
-        fetch('http://localhost:8080/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ "email": email,
-                "password": password
-            })
-        })
-            .then(response => {
-                console.log(response)
-                localStorage.setItem('user', response.data)
+        AuthService.login(userName, password)
+            .then(res => {
+                console.log("Request complete! response:", res);
+                console.log("login")
+                console.log(userName)
+                handleLogin(userName)
+            }).catch((error) => {
+            console.log("login error", error);
 
-                return response.json()
-            })
-            .then(response => console.log(JSON.stringify(response)))
+        });
+        setUserName("");
+        setPassword("");
+        const handleLogin = (userName) => {
+            console.log("h-login")
+            console.log(userName)
+
+            auth.login(userName)
+            navigate(redirectPath, {replace: true})
+        }
+
     }
 
 
     return (
         <>
-            <span className="navbar-text">
-                        <Link className="nav-link float-start" to={'/'}>
-                            <button className="btn btn-secondary btn-sm mx-2 my-1">BACK</button></Link>
-
-                    </span>
-
-
-            <div className="containerr">
-                <div className="forms">
-                    <div className="form register">
-                        <span className="title">login</span>
-                        <form onSubmit={submitForm}>
-                            <input placeholder={"Email"} type={"text"}
-                                   value={email}
-                                   onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <input placeholder={"Password"} type={"password"}
-                                   value={password}
-                                   onChange={(e) => setPassword(e.target.value)}/>
-                            <button >submit</button>
-                            <a id="reg" href="/register">Register Now</a>
-                        </form>
-                    </div>
+            <div className={"user signinBx"}>
+                <div className={"imgBx"}><img src={signImage} alt={"key"}/></div>
+                <div className={"formBx"}>
+                    <form onSubmit={submitForm}>
+                        <h2>Sign In</h2>
+                        <input placeholder={"UserName"} type={"text"}
+                               value={userName}
+                               onChange={(e) => setUserName(e.target.value)}
+                               required/>
+                        <input placeholder={"Password"} type={"password"}
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                               required/>
+                        <input type={"submit"} value={"Login"}/>
+                        <p className={"signup"}>don't have an account? <a href={"#"} onClick={() => toggleForm()}>Sign
+                            up.</a></p>
+                    </form>
                 </div>
             </div>
+
 
         </>
     );
