@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
 import Products from "../Product/Products";
-import NewProduct from "../NewProduct/NewProduct";
+import NewProduct from "../Product/NewProduct";
 import ButtonAdd from "../components/ButtonAdd";
-
+import {Link} from "react-router-dom";
 
 
 export default function Home() {
@@ -52,7 +52,7 @@ export default function Home() {
             mode: 'cors',
             headers: {
                 'Content-type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin': '*'
 
             },
 
@@ -102,12 +102,15 @@ export default function Home() {
     }
     return (
         <>
-
-                <Products products={products} onDelete={deleteProduct} onToggle={updateStatus}/>
-                {showAddProduct && <NewProduct onAdd={addProduct}/>}
-                <ButtonAdd onAdd={() => setShowAddProduct(!showAddProduct)}
-                           showAdd={showAddProduct}/>
+            <h1>HOME</h1>
+            <Link className="nav-link float-start" to={'/newList'}>
+                <button className="btn btn-secondary btn-sm mx-2 my-1">Nowa Lista</button></Link>
+            {/*<Products products={products} onDelete={deleteProduct} onToggle={updateStatus}/>*/}
+            {/*{showAddProduct && <NewProduct onAdd={addProduct}/>}*/}
+            {/*<ButtonAdd onAdd={() => setShowAddProduct(!showAddProduct)}*/}
+            {/*           showAdd={showAddProduct}/>*/}
 
         </>
+
     );
 }
