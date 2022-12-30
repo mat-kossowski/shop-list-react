@@ -3,11 +3,8 @@ import React from "react";
 function Product(props){
     return(
         <div>
-            <h3>{props.productName}</h3>
-            <div className="center">
-                <p>ID: {props.productAmount}</p>
-                <p>Content: {props.category}</p>
-            </div>
+            <p>{props.productName}</p>
+
         </div>
     );
 }

@@ -2,9 +2,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
-import Home from "./Home/Home";
-import Register from "./Register/Register";
-import Login from "./Login/Login";
 import Start from "./Start/Start";
 import NewList from "./ShopList/NewList";
 import Logout from "./Logout/Logout";
@@ -29,8 +26,6 @@ const App = () => {
                         <Route path="/" element={<Start/>}/>
                         <Route path="/login" element={<PageLogin/>}/>
                         <Route path="/shopLists" element={<ShopLists/>}/>
-                        {/*<Route path="/register" element={<Register/>}/>*/}
-                        {/*<Route path="/login" element={<Login/>}/>*/}
                         <Route path="/logout" element={<Logout/>}/>
                         <Route path="/shopList/new" element={<NewList/>}/>
                         <Route path="/product/new/:shopListId" element={<NewProduct/>}/>

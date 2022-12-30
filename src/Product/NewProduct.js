@@ -10,7 +10,9 @@ function NewProduct(){
     const options = [
         { value: "NABIAL", label: "NABIAL" },
         { value: "MIESO", label: "MIESO" },
-        { value: "other", label: "Other" }
+        { value: "WARZYWA", label: "WARZYWA" },
+        { value: "CHEMIA", label: "CHEMIA" },
+        { value: "INNE", label: "INNE" }
     ];
     const [gender, setGender] = useState("");
 
