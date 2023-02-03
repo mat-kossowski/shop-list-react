@@ -17,9 +17,9 @@ function ShopLists() {
             <Link to="/shopList/new">Add new</Link>
             <div className="Messages">
                 {shopLists.map((shopList) => {
-                    return <ShopList listName={shopList.listName}
-
+                    return <Link to={`/shopList/${shopList.shopListId}`}><ShopList listName={shopList.listName}
                     />
+                    </Link>
                 })}
             </div>
             <Link to="/login">

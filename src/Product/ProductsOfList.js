@@ -1,20 +1,14 @@
 import Product from './Product';
 import './product.css';
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useRef, useState} from "react";
 import ProductService from "./product.service";
 import {Link, useParams} from "react-router-dom";
+import product from "./Product";
 
 
 const ProductsOfList = () => {
 
     const {shopListId} = useParams();
-    const [products, setProducts] = useState([]);
-    const [dairy, setDairy] = useState([]);
-    const [meat, setMeat] = useState([]);
-    const [vegetables, setVegetables] = useState([]);
-    const [chemical, setChemical] = useState([]);
-    const [others, setOthers] = useState([]);
-    const [category, setCategory] = useState([dairy, others])
 
     const [lists, setLists] = useState([
         {name: "NABIAŁ", show: false, product: []},
@@ -28,46 +22,72 @@ const ProductsOfList = () => {
         ProductService.getProducts(shopListId)
             .then(res => matProduct(res.data))
             .then(r => console.log(r));
-    }, [shopListId]);
+    }, []);
 
     function matProduct(products) {
         let newLists = [...lists];
         products.forEach(product => {
-            console.log(product)
             if (product.category === "NABIAL") {
                 newLists[0].product = [...newLists[0].product, product];
-                // setDairy(dairy => [...dairy, product])
             } else if (product.category === "MIESO") {
                 newLists[1].product = [...newLists[1].product, product];
-                // setDairy(dairy => [...dairy, product])
             } else if (product.category === "WARZYWA") {
                 newLists[2].product = [...newLists[2].product, product];
-                // setDairy(dairy => [...dairy, product])
             } else if (product.category === "CHEMIA") {
                 newLists[3].product = [...newLists[3].product, product];
-                // setDairy(dairy => [...dairy, product])
             } else if (product.category === "INNE") {
                 newLists[4].product = [...newLists[4].product, product];
-                // setOthers(others => [...others, product])
             }
         })
         setLists(newLists);
-        console.log(lists);
     }
 
-
     const handleClick = (index) => {
-
-        console.log(lists);
         let newLists = [...lists];
         newLists[index].show = !newLists[index].show;
         setLists(newLists);
-
-
+    }
+    const onDelete = productId => {
+        ProductService.deleteProduct(productId)
+            .then(res => {
+                console.log("Request complete! response:", res);
+            })
+            .catch((error) => {
+                console.log("creating message error", error);
+            });
+    }
+    const updateProductStatus = productId => {
+        ProductService.updateProductStatus(productId)
+            .then(res => {
+                console.log("Request complete! response:", res);
+            })
+            .catch((error) => {
+                console.log("creating message error", error);
+            });
     }
 
+    const clickDeleteItem = (index, productId) => {
+        let newLists = [...lists];
+        newLists[index].product = lists[index].product.filter(product => product.productId !== productId)
+        setLists(newLists);
+    };
 
-console.log(lists)
+    const clickStatusProduct = (index, productId) => {
+        let newLists = [...lists];
+        newLists[index].product
+            .filter(product => product.productId === productId)
+            .map(product => !product.productStatus ? product.productStatus=true : product.productStatus=false)
+        newLists[index].product
+            .sort((a,b) =>{
+                if (a.productName < b.productName) return -1;
+                if (a.productName> b.productName) return 1;
+                return 0;
+            })
+        newLists[index].product.sort((a,b) =>a.productStatus - b.productStatus)
+
+        setLists(newLists)
+
+    }
 
     return (
         <>
@@ -79,12 +99,19 @@ console.log(lists)
                         <ol key={index}>
                             <button className={"productList"} onClick={() => handleClick(index)}>{list.name}</button>
                             {list.show && (
-                                <ul className={"collectionProducts"} >
-                                    {list.product.map((product) => {
+                                <ul className={"collectionProducts"}>
+                                    {list.product
+                                        .map(product => {
+
                                         return <>
-                                            <li><Product productName={product.productName}
-                                                         productAmount={product.productAmount}
-                                                         category={product.category}
+                                            <li><Product
+                                                index={index}
+                                                product={product}
+                                                clickStatusProduct={clickStatusProduct}
+                                                onDelete={onDelete}
+                                                updateProductStatus={updateProductStatus}
+                                                clickDeleteItem={clickDeleteItem}
+                                                key={product.productId}
                                             />
                                             </li>
                                         </>

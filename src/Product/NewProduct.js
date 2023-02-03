@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import ProductService from "./product.service";
 import { Select, MenuItem } from "@material-ui/core";
 // import {MenuItem} from "@mui/material";
 
 
 function NewProduct(){
-
+    const navigate = useNavigate();
     const options = [
         { value: "NABIAL", label: "NABIAL" },
         { value: "MIESO", label: "MIESO" },
@@ -46,6 +46,10 @@ function NewProduct(){
             }).catch((error) => {
             console.log("creating message error", error);
         });
+        setTimeout(()=>{
+            navigate(`/shopList/${shopListId}`)
+        }, 300)
+
     }
     return (
         <div className={"wrapper-container"}>

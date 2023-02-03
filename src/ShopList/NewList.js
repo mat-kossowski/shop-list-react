@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ShopListService from "./shopList.service";
 
 
 const NewList = () => {
     const [errors, setErrors] = useState("");
-
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         listName: ""
     });
     const {listName} = form;
 
     function handleChange(e) {
+        console.log("to")
+
         setForm({...form, [e.target.name]: e.target.value});
     }
 
@@ -21,6 +23,7 @@ const NewList = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log("tu")
         ShopListService.createList({listName: listName})
             .then(res => {
                 console.log("Request complete! response:", res);
@@ -29,6 +32,7 @@ const NewList = () => {
             setErrors("creation error");
         });
         setErrors("created successfully");
+        navigate('/shopLists')
     }
 
 
@@ -80,11 +84,11 @@ const NewList = () => {
                                 required
                             />
 
-                            <button className={"submit-btn"} type="submit">
+                           <button className={"submit-btn"} type="submit">
                                 Add
                             </button>
 
-                        </form>
+                    </form>
                     </div>
                 </div>
             </div>
