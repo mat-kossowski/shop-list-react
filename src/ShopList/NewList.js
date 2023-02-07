@@ -32,7 +32,9 @@ const NewList = () => {
             setErrors("creation error");
         });
         setErrors("created successfully");
+        setTimeout(()=>{
         navigate('/shopLists')
+        }, 300)
     }
 
 

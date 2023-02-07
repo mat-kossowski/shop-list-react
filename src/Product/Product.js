@@ -1,29 +1,30 @@
-import React, {useEffect} from "react";
-import {useParams} from "react-router-dom";
+import React from "react";
 
 
-
-function Product({product, onDelete,clickDeleteItem, index, clickStatusProduct, updateProductStatus}){
-    return(
+function Product({product, onDelete, clickDeleteItem, index, clickStatusProduct, updateProductStatus}) {
+    return (
         <div>
-            <div onClick={()=>{
+            <div className={"productDiv"} onClick={() => {
                 updateProductStatus(product.productId)
                 clickStatusProduct(index, product.productId)
             }}>
-            {(product.productStatus )
-                ?
-                <s>{product.productName}</s>
-            :
-                <p>{product.productName}</p>
-            }
-        </div>
-
-            <button  onClick={()=>{
-                onDelete(product.productId)
-                clickDeleteItem(index, product.productId)
-            }
-            }> DELETE</button>
+                {(product.productStatus)
+                    ?
+                    <s>{product.productName}</s>
+                    :
+                    <p>{product.productName}</p>
+                }
+            </div>
+            <div className={"buttonDiv"}>
+                <button onClick={() => {
+                    onDelete(product.productId)
+                    clickDeleteItem(index, product.productId)
+                }
+                }> DELETE
+                </button>
+            </div>
         </div>
     );
 }
+
 export default Product;

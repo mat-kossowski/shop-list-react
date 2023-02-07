@@ -37,6 +37,7 @@ const logout = () => {
     return axios.post(API_URL + "logout").then((response) => {
         return response.data;
     });
+
 };
 
 

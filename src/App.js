@@ -8,16 +8,15 @@ import Logout from "./Logout/Logout";
 import ShopLists from "./ShopList/ShopLists";
 import ProductsOfList from "./Product/ProductsOfList";
 import NewProduct from "./Product/NewProduct";
-import {AuthProvider} from "./ProtectedRoutes/auth";
 import PageLogin from "./PageLogin/PageLogin";
 import Navbar from "./Navbar/Navbar";
 import React from "react";
-
+import AuthProvider from "./ProtectedRoutes/auth";
 
 
 const App = () => {
-
     return (
+
         <AuthProvider>
             <div className="App">
                 <Navbar/>
@@ -30,14 +29,10 @@ const App = () => {
                         <Route path="/shopList/new" element={<NewList/>}/>
                         <Route path="/product/new/:shopListId" element={<NewProduct/>}/>
                         <Route exact path="/shopList/:shopListId" element={<ProductsOfList/>}/>
-
                     </Routes>
-
                 </BrowserRouter>
             </div>
-
-</AuthProvider>
-
+        </AuthProvider>
     );
 }
 

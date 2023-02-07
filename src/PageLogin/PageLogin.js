@@ -1,6 +1,4 @@
 import React from "react"
-import singImage from '../image/key.png'
-import singImage2 from '../image/key2.png'
 import './pagelogin.css'
 import Login from "../Login/Login";
 import Register from "../Register/Register";

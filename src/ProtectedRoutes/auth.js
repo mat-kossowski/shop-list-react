@@ -1,25 +1,19 @@
-import {useState, createContext, useContext, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
-const AuthContext = createContext(null);
+export const AuthContext = React.createContext();
 
-export const AuthProvider = ({children}) => {
+const AuthProvider = ({children}) => {
     const [userName, setUserName] = useState(null)
-
     useEffect(() => {
         getUser()
             .then(user => {
                 if (user.data.id !== null) {
                     setUserName(user.data.username)
-                    console.log("auth")
-                    console.log(user.data.username)
-                    console.log()
-
                 }
             })
-    }, [])
-
-
+    }, [userName])
 
     const getUser = () => {
         return axios.get("http://localhost:3000/api/auth/current")
@@ -27,20 +21,16 @@ export const AuthProvider = ({children}) => {
 
     const login = (userName) => {
         setUserName(userName);
-
     }
+
     const logout = () => {
         setUserName(null);
-
     }
     return (
         <AuthContext.Provider value={{userName, login, logout}}>
             {children}
         </AuthContext.Provider>
     )
-
 }
 
-export const useAuth = () => {
-    return useContext(AuthContext)
-}
+export default AuthProvider;

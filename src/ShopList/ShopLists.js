@@ -16,18 +16,16 @@ function ShopLists() {
         <>
             <Link to="/shopList/new">Add new</Link>
             <div className="Messages">
+                <ul>
                 {shopLists.map((shopList) => {
-                    return <Link to={`/shopList/${shopList.shopListId}`}><ShopList listName={shopList.listName}
+                    return <li><Link to={`/shopList/${shopList.shopListId}`}><ShopList listName={shopList.listName}
                     />
                     </Link>
+                    </li>
                 })}
+            </ul>
             </div>
-            <Link to="/login">
-                Login
-            </Link>
-            <Link to="/logout">
-                Logout
-            </Link>
+
         </>
     );
 }

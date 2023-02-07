@@ -1,9 +1,9 @@
 import Product from './Product';
 import './product.css';
-import {useEffect, useReducer, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import ProductService from "./product.service";
 import {Link, useParams} from "react-router-dom";
-import product from "./Product";
+
 
 
 const ProductsOfList = () => {
@@ -20,11 +20,11 @@ const ProductsOfList = () => {
 
     useEffect(() => {
         ProductService.getProducts(shopListId)
-            .then(res => matProduct(res.data))
+            .then(res => addProductsToLists(res.data))
             .then(r => console.log(r));
     }, []);
 
-    function matProduct(products) {
+    function addProductsToLists(products) {
         let newLists = [...lists];
         products.forEach(product => {
             if (product.category === "NABIAL") {
@@ -71,20 +71,25 @@ const ProductsOfList = () => {
         newLists[index].product = lists[index].product.filter(product => product.productId !== productId)
         setLists(newLists);
     };
+    const sortByStatusAndName = (a, b) => {
+        const s1 = a.productStatus
+        const s2 = b.productStatus
+        const n1 = a.productName
+        const n2 = b.productName
+        if (s1 < s2) return -1;
+        if (s1 > s2) return 1;
+        if (n1 < n2) return -1;
+        if (n1 > n2) return 1;
+        return 0;
+    }
 
     const clickStatusProduct = (index, productId) => {
         let newLists = [...lists];
         newLists[index].product
             .filter(product => product.productId === productId)
-            .map(product => !product.productStatus ? product.productStatus=true : product.productStatus=false)
+            .map(product => !product.productStatus ? product.productStatus = true : product.productStatus = false)
         newLists[index].product
-            .sort((a,b) =>{
-                if (a.productName < b.productName) return -1;
-                if (a.productName> b.productName) return 1;
-                return 0;
-            })
-        newLists[index].product.sort((a,b) =>a.productStatus - b.productStatus)
-
+            .sort(sortByStatusAndName)
         setLists(newLists)
 
     }
@@ -96,29 +101,35 @@ const ProductsOfList = () => {
                 <div>
                     {lists.map((list, index) => (
 
-                        <ol key={index}>
-                            <button className={"productList"} onClick={() => handleClick(index)}>{list.name}</button>
+                        <div className={"category"} key={index}>
+                            <div className={"headCategory"}>
+                                <button className={"productList"}
+                                        onClick={() => handleClick(index)}>{list.name}</button>
+                            </div>
                             {list.show && (
-                                <ul className={"collectionProducts"}>
-                                    {list.product
-                                        .map(product => {
+                                <div className={"collectionProducts"}>
+                                    <ul>
+                                        {list.product
+                                            .map(product => {
 
-                                        return <>
-                                            <li><Product
-                                                index={index}
-                                                product={product}
-                                                clickStatusProduct={clickStatusProduct}
-                                                onDelete={onDelete}
-                                                updateProductStatus={updateProductStatus}
-                                                clickDeleteItem={clickDeleteItem}
-                                                key={product.productId}
-                                            />
-                                            </li>
-                                        </>
-                                    })}
-                                </ul>
+                                                return <>
+                                                    <li><Product
+                                                        index={index}
+                                                        product={product}
+                                                        clickStatusProduct={clickStatusProduct}
+                                                        onDelete={onDelete}
+                                                        updateProductStatus={updateProductStatus}
+                                                        clickDeleteItem={clickDeleteItem}
+                                                        key={product.productId}
+                                                    />
+                                                    </li>
+                                                </>
+                                            })}
+
+                                    </ul>
+                                </div>
                             )}
-                        </ol>
+                        </div>
                     ))}
                 </div>
 

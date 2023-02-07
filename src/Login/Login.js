@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from "react"
-import {Link} from "react-router-dom";
+import React, {useContext, useState} from "react"
 import AuthService from "../auth.service";
-import {useAuth} from "../ProtectedRoutes/auth";
 
 import {useNavigate, useLocation} from "react-router-dom";
 import signImage from "../image/key.png";
+import {AuthContext} from "../ProtectedRoutes/auth";
 
 export default function Login({toggleForm}) {
-
-    const auth = useAuth()
+    const context = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const redirectPath = location.state?.path || '/'
@@ -20,8 +18,6 @@ export default function Login({toggleForm}) {
         AuthService.login(userName, password)
             .then(res => {
                 console.log("Request complete! response:", res);
-                console.log("login")
-                console.log(userName)
                 handleLogin(userName)
             }).catch((error) => {
             console.log("login error", error);
@@ -30,13 +26,9 @@ export default function Login({toggleForm}) {
         setUserName("");
         setPassword("");
         const handleLogin = (userName) => {
-            console.log("h-login")
-            console.log(userName)
-
-            auth.login(userName)
+            context.login(userName)
             navigate(redirectPath, {replace: true})
         }
-
     }
 
 
@@ -56,8 +48,11 @@ export default function Login({toggleForm}) {
                                onChange={(e) => setPassword(e.target.value)}
                                required/>
                         <input type={"submit"} value={"Login"}/>
-                        <p className={"signup"}>don't have an account? <a href={"#"} onClick={() => toggleForm()}>Sign
-                            up.</a></p>
+
+                        <p className={"signup"}>don't have an account?
+                            <a href={"#"} onClick={() => toggleForm()}>Sign
+                                up.</a>
+                        </p>
                     </form>
                 </div>
             </div>
