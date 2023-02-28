@@ -1,5 +1,5 @@
 import axios from "axios";
-import product from "./Product";
+
 
 const API_URL = "http://localhost:3000/api/product";
 
@@ -69,6 +69,12 @@ const updateProduct = ({productId, productName,productAmount,productUnit }) => {
     console.log(json);
     return axios.put(API_URL + "/update" , json, customConfig);
 };
+const handleChange = ( setForm,form ) =>{
+    return function(event) {
+        const { name, value } = event.target;
+        setForm({ ...form, [name]: value });
+    }
+}
 
 const ProductService = {
     getProduct,
@@ -77,6 +83,7 @@ const ProductService = {
     addProduct,
     deleteProduct,
     updateProductStatus,
-    updateProduct
+    updateProduct,
+    handleChange
 }
 export default ProductService;

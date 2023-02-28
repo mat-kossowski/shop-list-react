@@ -34,7 +34,7 @@ export default function Login({toggleForm}) {
 
     return (
         <>
-            <div className={"user signinBx"}>
+            <div className={"user signInBx"}>
                 <div className={"imgBx"}><img src={signImage} alt={"key"}/></div>
                 <div className={"formBx"}>
                     <form onSubmit={submitForm}>

@@ -3,8 +3,8 @@ import './shopList.css'
 import edit from "../image/edit.png";
 import iconDelete from "../image/delete.png";
 import {Link} from "react-router-dom";
-import ProductService from "../Product/product.service";
 import ShopListService from "./shopList.service";
+import appService from "../service/app.service";
 
 function ShopList({shopList, onDelete, clickDeleteItem}) {
 
@@ -19,15 +19,12 @@ function ShopList({shopList, onDelete, clickDeleteItem}) {
 
     };
     const [form, setForm] = useState(initial);
-
-
     const {listName} = form;
-    const handleUpdateItem = (e) => {
-        // e.preventDefault();
+
+    const handleUpdateItem = () => {
         ShopListService.updateShopListName({
             shopListId: shopList.shopListId,
             listName: listName
-
         })
             .then(res => {
                 console.log("Request complete! response:", res);
@@ -39,39 +36,8 @@ function ShopList({shopList, onDelete, clickDeleteItem}) {
 
 
     }
-    const reload = () => {
-        let newForm = form
-        console.log(newForm)
-        if (newForm.listName !== "") {
-        } else {
-            newForm.listName = "Nowa lista"
-        }
-
-        setForm(newForm)
-        console.log(newForm)
-    }
-
-
-    function handleChangeName(e) {
-        const {name, value} = e.target;
-        console.log(name)
-        console.log(value)
-        if (value === "") {
-            setForm(() => {
-                return {
-                    ...form, [name]: ""
-                };
-            });
-        } else {
-            setForm(() => {
-                return {
-                    ...form, [name]: value
-                };
-            });
-        }
-
-    }
-
+    const reload = appService.reload(setForm, form)
+    const handleChangeName = appService.handleChangeName(setForm, form)
 
 
     return (

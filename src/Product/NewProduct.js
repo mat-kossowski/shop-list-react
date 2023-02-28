@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import ProductService from "./product.service";
-import { Select, MenuItem } from "@material-ui/core";
+import {Select, MenuItem} from "@material-ui/core";
+import productService from "./product.service";
+import appService from "../service/app.service";
 
 
-function NewProduct(){
+function NewProduct() {
     const navigate = useNavigate();
     const options = [
-        { value: "NABIAL", label: "NABIAL" },
-        { value: "MIESO", label: "MIESO" },
-        { value: "WARZYWA", label: "WARZYWA" },
-        { value: "CHEMIA", label: "CHEMIA" },
-        { value: "INNE", label: "INNE" }
+        {value: "NABIAL", label: "NABIAL"},
+        {value: "MIESO", label: "MIESO"},
+        {value: "WARZYWA", label: "WARZYWA"},
+        {value: "CHEMIA", label: "CHEMIA"},
+        {value: "INNE", label: "INNE"}
     ];
-    const [gender, setGender] = useState("");
+    const [categoryOptions, setCategory] = useState("");
 
     const handleChange2 = (event) => {
-        setGender(event.target.value);
+        setCategory(event.target.value);
         setForm({...form, [event.target.name]: event.target.value});
     };
 
@@ -27,35 +29,33 @@ function NewProduct(){
         productAmount: "",
         category: ""
     });
-    const {productName, productAmount,category} = form;
+    const {productName, productAmount, category} = form;
 
-    function handleChange(e) {
+    const handleChange = appService.handleChange(setForm,form)
 
-        setForm({...form, [e.target.name]: e.target.value});
-    }
-
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault();
-        ProductService.addProduct(shopListId,{
-            productName:productName,
-            productAmount:productAmount,
-            category:category
+        ProductService.addProduct(shopListId, {
+            productName: productName,
+            productAmount: productAmount,
+            category: category
         })
-            .then(res=>{
+            .then(res => {
                 console.log("Request complete! response:", res);
             }).catch((error) => {
             console.log("creating message error", error);
         });
-        setTimeout(()=>{
+        setTimeout(() => {
             navigate(`/shopList/${shopListId}`)
         }, 300)
 
     }
+
     return (
-        <div className={"wrapper-container"}>
-            <div className={"outer-box"}>
-                <div className={"inner-box"}>
-                    <h1 className={"title"}>Add new message</h1>
+        <div className={"WrapperContainer"}>
+            <div className={"OuterBox"}>
+                <div className={"InnerBox"}>
+                    <h1 className={"Title"}>Add new message</h1>
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
@@ -74,7 +74,7 @@ function NewProduct(){
                             required
                         />
                         <Select
-                            value={gender}
+                            value={categoryOptions}
                             onChange={handleChange2}
                             name="category"
                         >
@@ -96,6 +96,7 @@ function NewProduct(){
     );
 
 }
+
 export default NewProduct;
 
 

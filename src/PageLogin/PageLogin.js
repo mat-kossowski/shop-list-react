@@ -10,14 +10,14 @@ export default function PageLogin() {
     let section;
     const toggleForm=()=>{
         section = document.querySelector('section');
-        container = document.querySelector('.LContainer');
+        container = document.querySelector('.PageLoginContainer');
         container.classList.toggle('active');
         section.classList.toggle('active');
     };
     return (
         <>
             <section>
-            <div className={"LContainer"}>
+            <div className={"PageLoginContainer"}>
                 <Login toggleForm={toggleForm}/>
                 <Register toggleForm={toggleForm}/>
             </div>
