@@ -3,8 +3,11 @@ import product from "./Product";
 
 const API_URL = "http://localhost:3000/api/product";
 
-const getProducts = (shopListId) => {
-    return axios.get(API_URL + "/" + shopListId);
+const getProductsCategory = (shopListId) => {
+    return axios.get(API_URL + "/category/"+ shopListId);
+};
+const getProductsAlphabet = (shopListId) => {
+    return axios.get(API_URL + "/alphabet/" + shopListId);
 };
 
 const getProduct = (productId, shopListId) => {
@@ -47,12 +50,33 @@ const updateProductStatus=(productId) =>{
 
     return axios.put(API_URL + "/status/"+ productId);
 }
+const updateProduct = ({productId, productName,productAmount,productUnit }) => {
+    let customConfig = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    if(productName === ""){
+        productName = "Nazwa"
+    }
+    let json = JSON.stringify({
+        productId: productId,
+        productName: productName,
+        productAmount: productAmount,
+        productUnit: productUnit
+
+    })
+    console.log(json);
+    return axios.put(API_URL + "/update" , json, customConfig);
+};
 
 const ProductService = {
     getProduct,
-    getProducts,
+    getProductsCategory,
+    getProductsAlphabet,
     addProduct,
     deleteProduct,
-    updateProductStatus
+    updateProductStatus,
+    updateProduct
 }
 export default ProductService;

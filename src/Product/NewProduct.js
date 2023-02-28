@@ -30,6 +30,7 @@ function NewProduct(){
     const {productName, productAmount,category} = form;
 
     function handleChange(e) {
+
         setForm({...form, [e.target.name]: e.target.value});
     }
 
@@ -87,15 +88,7 @@ function NewProduct(){
                         <button className={"submit-btn"} type="submit">
                             Add
                         </button>
-                        <Link to="/">
-                            Back to main page
-                        </Link>
-                        <Link to="/login">
-                            Login
-                        </Link>
-                        <Link to="/logout">
-                            Logout
-                        </Link>
+
                     </form>
                 </div>
             </div>

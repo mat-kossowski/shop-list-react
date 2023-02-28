@@ -36,9 +36,9 @@
 }
 
 .Messages {
+    padding-bottom: 40px;
     position: sticky;
     left: 0;
-    background: white;
     display: flex;
     justify-content: center;
     transition: 0.5s;
@@ -58,26 +58,121 @@
     border-radius: 9px;
 }
 
-.category {
-    width: 618px;
-}
+
 
 .headCategory {
     display: flex;
     width: 100%;
+    padding-bottom: 1px;
 }
 
 .collectionProducts {
-
-    width: 100%;
+    width: 618px;
     background: #FFFFFF;
-    border-radius: 28px;
+    border-radius: 28px 28px 28px 28px;
+    border: solid #282c34;
+    height: 100%;
+    margin-bottom: 2px;
 }
-
+button{
+    border: 0;
+    background: #4B6452;
+}
+.buttonSortProduct{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 28px 28px 28px 28px;
+    border: solid #282c34;
+    padding: 3px;
+}
+.product{
+    width: 100%;
+    display: flex;
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .productDiv {
+    text-align: left;
+    width: 40%;
     float: left;
+
+}
+.productAmount {
+    text-align: left;
+    width: 10%;
+    float: left;
+
+}
+.productUnit {
+    text-align: left;
+    width: 10%;
+    float: left;
+
+}
+.productDiv p {
+    margin: 0;
+}
+.MyIconsProduct{
+    width: 40%;
+    margin-left: 0;
+    margin-right: 15px;
+    text-align: right;
+
+}
+.MyIconProduct{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4B6452;
+    mix-blend-mode: luminosity;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    margin-left: 5px;
+    justify-content: center;
+
+
+}
+.IconImageProduct{
+
+    height: 24px;
+    margin: 3px;
+
+}
+.MyIconCategory{
+
+    height: 30px;
+    text-align: center;
+    background: #4B6452;
+    mix-blend-mode: luminosity;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    margin-left: 5px;
+    justify-content: center;
+    color: white;
+    padding: 2px 5px 2px 5px;
+}
+.buttonEdit{
+    width: 20%;
+    float: left;
+}
+.buttonDelete{
+    width: 20%;
+
 }
 
 ul {
     list-style-type: none;
+}
+li{
+    width: 100%;
+    text-align: left;
+}
+.sortProduct{
+    width: 100%;
+
+
+}
+.containerOfProduct{
+    width: 100%;
 }

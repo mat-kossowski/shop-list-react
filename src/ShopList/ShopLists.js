@@ -1,31 +1,65 @@
 import React, {useEffect, useState} from 'react';
 
 import {Link} from "react-router-dom";
-
+import './shopList.css'
 import ShopListService from "./shopList.service";
 import ShopList from "./ShopList";
+
 
 function ShopLists() {
     const [shopLists, setShopLists] = useState([]);
 
+
     useEffect(() => {
-        ShopListService.getLists().then(res => setShopLists(res.data)).then(r => console.log(r));
+        ShopListService.getLists()
+            .then(res => console.log(res.data))
+            .then(r => console.log(r));
+        ShopListService.getLists()
+            .then(res => setShopLists(res.data))
+            .then(r => console.log(r));
     }, []);
+
+console.log(shopLists)
+    const onDelete = shopListId=> {
+        ShopListService.deleteShopList(shopListId)
+            .then(res => {
+                console.log("Request complete! response:", res);
+            })
+            .catch((error) => {
+                console.log("creating message error", error);
+            });
+    }
+    const clickDeleteItem = (shopListId) => {
+        let newLists = [...shopLists];
+        newLists = shopLists.filter(shopList => shopList.shopListId !== shopListId);
+
+        setShopLists(newLists);
+    };
 
     return (
         <>
-            <Link to="/shopList/new">Add new</Link>
-            <div className="Messages">
-                <ul>
-                {shopLists.map((shopList) => {
-                    return <li><Link to={`/shopList/${shopList.shopListId}`}><ShopList listName={shopList.listName}
-                    />
-                    </Link>
-                    </li>
-                })}
-            </ul>
-            </div>
+            <div className={"containerOfShopLists"}>
+                <div><h1>TWOJE LISTY ZAKUPÓW</h1></div>
 
+            <div className="boxOfShopLists">
+                {shopLists.map((shopList) => {
+                    return<>
+
+                        <ShopList
+                            key={shopList.shopListId}
+                            shopList={shopList}
+                            onDelete={onDelete}
+                            clickDeleteItem={clickDeleteItem}
+                    />
+
+                </>
+                })}
+            </div>
+                <div>
+                    <Link to="/shopList/new">Add new</Link>
+                </div>
+
+        </div>
         </>
     );
 }

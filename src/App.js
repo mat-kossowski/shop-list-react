@@ -12,6 +12,7 @@ import PageLogin from "./PageLogin/PageLogin";
 import Navbar from "./Navbar/Navbar";
 import React from "react";
 import AuthProvider from "./ProtectedRoutes/auth";
+import Entrusting from "./ShopList/Entrusting";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                         <Route path="/logout" element={<Logout/>}/>
                         <Route path="/shopList/new" element={<NewList/>}/>
                         <Route path="/product/new/:shopListId" element={<NewProduct/>}/>
+                        <Route path="/shopList/entrusting/:shopListId" element={<Entrusting/>}/>
                         <Route exact path="/shopList/:shopListId" element={<ProductsOfList/>}/>
                     </Routes>
                 </BrowserRouter>

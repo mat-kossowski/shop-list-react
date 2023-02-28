@@ -1,51 +1,51 @@
 import Product from './Product';
 import './product.css';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import ProductService from "./product.service";
+import ShopListService from "../ShopList/shopList.service";
 import {Link, useParams} from "react-router-dom";
-
+import product from "./Product";
+import {AuthContext} from "../ProtectedRoutes/auth";
 
 
 const ProductsOfList = () => {
 
     const {shopListId} = useParams();
-
-    const [lists, setLists] = useState([
-        {name: "NABIAŁ", show: false, product: []},
-        {name: "MIESO", show: false, product: []},
-        {name: "WARZYWA", show: false, product: []},
-        {name: "CHEMIA", show: false, product: []},
-        {name: "INNE", show: false, product: []}
-    ]);
-
+    const [list, setList] = useState([]);
+    const [sortAlph, setSortAlph] = useState();
+    // const [lists, setLists] = useState([
+    //     {name: "NABIAŁ", product: []},
+    //     {name: "MIESO", product: []},
+    //     {name: "WARZYWA", product: []},
+    //     {name: "CHEMIA", product: []},
+    //     {name: "INNE", product: []}
+    // ]);
+    console.log(sortAlph)
     useEffect(() => {
-        ProductService.getProducts(shopListId)
-            .then(res => addProductsToLists(res.data))
-            .then(r => console.log(r));
+
+        ShopListService.getStatusSort(shopListId)
+            .then(res => setSortAlph(res.data));
+        ShopListService.getStatusSort(shopListId)
+            .then(res => sort(res.data));
+
+
     }, []);
-
-    function addProductsToLists(products) {
-        let newLists = [...lists];
-        products.forEach(product => {
-            if (product.category === "NABIAL") {
-                newLists[0].product = [...newLists[0].product, product];
-            } else if (product.category === "MIESO") {
-                newLists[1].product = [...newLists[1].product, product];
-            } else if (product.category === "WARZYWA") {
-                newLists[2].product = [...newLists[2].product, product];
-            } else if (product.category === "CHEMIA") {
-                newLists[3].product = [...newLists[3].product, product];
-            } else if (product.category === "INNE") {
-                newLists[4].product = [...newLists[4].product, product];
-            }
-        })
-        setLists(newLists);
-    }
-
-    const handleClick = (index) => {
-        let newLists = [...lists];
-        newLists[index].show = !newLists[index].show;
-        setLists(newLists);
+    console.log(list)
+    const sort = (x) => {
+        console.log(x)
+        if (x === true) {
+            console.log("tak")
+            ProductService.getProductsAlphabet(shopListId)
+                .then(res => setList(res.data))
+                .then(r => console.log(r));
+        } else {
+            console.log("nie");
+            console.log(x)
+            console.log(x === true)
+            ProductService.getProductsCategory(shopListId)
+                .then(res => setList(res.data))
+                .then(r => console.log(r));
+        }
     }
     const onDelete = productId => {
         ProductService.deleteProduct(productId)
@@ -66,71 +66,149 @@ const ProductsOfList = () => {
             });
     }
 
-    const clickDeleteItem = (index, productId) => {
-        let newLists = [...lists];
-        newLists[index].product = lists[index].product.filter(product => product.productId !== productId)
-        setLists(newLists);
+    const updateSortStatus = (shopListId) => {
+        ShopListService.updateShopListSort(shopListId)
+            .then(res => {
+                console.log("Sort complete! response:", res);
+            })
+            .catch((error) => {
+                console.log("Sort message error", error);
+            });
+    }
+    const clickSortAlph = () => {
+        setSortAlph(true)
+        let newLists = [...list];
+        newLists
+            .sort(sortByCategory)
+        newLists
+            .sort(sortByName)
+
+        setList(newLists)
+
+    }
+    const refresh = ()=>{
+        setTimeout(()=>{console.log(list)
+            console.log("1")
+            let newLists = [...list];
+            setList(newLists)
+            console.log("2")
+            console.log(list)
+        }, 300)
+
+
+    }
+    const clickSortCategory = () => {
+        setSortAlph(false)
+        let newLists = [...list];
+        newLists
+            .sort(sortByCategory)
+
+        setList(newLists)
+    }
+    const clickDeleteItem = (productId) => {
+        let newLists = [...list];
+        newLists = list.filter(product => product.productId !== productId)
+        setList(newLists);
     };
-    const sortByStatusAndName = (a, b) => {
-        const s1 = a.productStatus
-        const s2 = b.productStatus
-        const n1 = a.productName
-        const n2 = b.productName
-        if (s1 < s2) return -1;
-        if (s1 > s2) return 1;
+    const sortByName = (a, b) => {
+        const n1 = a.productName.toLowerCase()
+        const n2 = b.productName.toLowerCase()
+        if (n1 < n2) return -1;
+        if (n1 > n2) return 1;
+        return 0;
+    }
+    const sortByCategory = (a, b) => {
+        const n1 = a.category
+        const n2 = b.category
         if (n1 < n2) return -1;
         if (n1 > n2) return 1;
         return 0;
     }
 
-    const clickStatusProduct = (index, productId) => {
-        let newLists = [...lists];
-        newLists[index].product
+    const clickStatusProduct = (productId) => {
+        let newLists = [...list];
+        newLists
             .filter(product => product.productId === productId)
             .map(product => !product.productStatus ? product.productStatus = true : product.productStatus = false)
-        newLists[index].product
-            .sort(sortByStatusAndName)
-        setLists(newLists)
+        if (sortAlph === true) {
+            newLists
+                .sort(sortByName)
+
+            console.log("alfabetycznie")
+        } else {
+            newLists
+                .sort(sortByName)
+            newLists
+                .sort(sortByCategory)
+            console.log("categoria")
+        }
+
+        setList(newLists)
 
     }
 
     return (
         <>
+            <div className={"sortProduct"}>
+                {sortAlph !== true ? <button className={"buttonSortProduct"} onClick={() => {
+                        updateSortStatus(shopListId)
+                        clickSortAlph()
+                    }}>
+                        alfabetycznie</button>
+                    :
+                    <button className={"buttonSortProduct"} onClick={() => {
+                        updateSortStatus(shopListId)
+                        clickSortCategory()
+                    }}>
+                        categoriami</button>
+                }
 
+
+            </div>
+            <div className="Messages">
+                <div className={"collectionProducts"}>
+                    <div>
+                        {list
+                            .filter(product => product.productStatus === false)
+                            .map(product => {
+                                return <>
+                                    <Product
+                                        product={product}
+                                        clickStatusProduct={clickStatusProduct}
+                                        onDelete={onDelete}
+                                        updateProductStatus={updateProductStatus}
+                                        clickDeleteItem={clickDeleteItem}
+                                        key={product.productId}
+                                        // refresh={refresh}
+                                    />
+                                </>
+                            })}
+                    </div>
+
+                </div>
+            </div>
             <div className="Messages">
                 <div>
-                    {lists.map((list, index) => (
 
-                        <div className={"category"} key={index}>
-                            <div className={"headCategory"}>
-                                <button className={"productList"}
-                                        onClick={() => handleClick(index)}>{list.name}</button>
-                            </div>
-                            {list.show && (
-                                <div className={"collectionProducts"}>
-                                    <ul>
-                                        {list.product
-                                            .map(product => {
+                    <div className={"collectionProducts"} style={{background: "grey"}}>
+                        <div>
+                            {list
+                                .filter(product => product.productStatus === true)
+                                .map(product => {
 
-                                                return <>
-                                                    <li><Product
-                                                        index={index}
-                                                        product={product}
-                                                        clickStatusProduct={clickStatusProduct}
-                                                        onDelete={onDelete}
-                                                        updateProductStatus={updateProductStatus}
-                                                        clickDeleteItem={clickDeleteItem}
-                                                        key={product.productId}
-                                                    />
-                                                    </li>
-                                                </>
-                                            })}
-
-                                    </ul>
-                                </div>
-                            )}
+                                    return <>
+                                        <Product
+                                            product={product}
+                                            clickStatusProduct={clickStatusProduct}
+                                            onDelete={onDelete}
+                                            updateProductStatus={updateProductStatus}
+                                            clickDeleteItem={clickDeleteItem}
+                                            key={product.productId}
+                                        />
+                                    </>
+                                })}
                         </div>
-                    ))}
+                    </div>
                 </div>
 
             </div>

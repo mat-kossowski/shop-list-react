@@ -18,11 +18,8 @@ const NewList = () => {
     }
 
 
-
-
-
     function handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         console.log("tu")
         ShopListService.createList({listName: listName})
             .then(res => {
@@ -32,50 +29,20 @@ const NewList = () => {
             setErrors("creation error");
         });
         setErrors("created successfully");
-        setTimeout(()=>{
-        navigate('/shopLists')
-        }, 300)
+        setTimeout(() => {
+            navigate('/shopLists')
+        }, 100)
     }
-
-
-// Add List
-//     const submitForm = (e) => {
-//         e.preventDefault()
-//
-//         if (!listName) {
-//             alert('Please add a list')
-//             return
-//         }
-//         fetch(`http://localhost:8080/api/shoplist/newlist`, {
-//             method: 'POST',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//
-//             },
-//             body: JSON.stringify({
-//                 "listName": listName,
-//             }),
-//         })
-//             .then(response => response.json())
-//             .then(response => console.log(JSON.stringify(response)))
-//         history('/home')
-//
-//     }
 
     return (
 
         <>
-            <span className="navbar-text">
-                        <Link className="nav-link float-start" to={'/'}>
-                            <button className="btn btn-secondary btn-sm mx-2 my-1">BACK</button></Link>
 
-                    </span>
             <div className={"wrapper-container"}>
                 <div className={"outer-box"}>
                     <div className={"inner-box"}>
-                        <h1 className={"title"}>Add new message</h1>
-                        <h4>{errors}</h4>
+                        <h1 className={"title"}>Stwórz nowa listę</h1>
+
                         <form onSubmit={handleSubmit}>
                             <input
                                 type="text"
@@ -86,16 +53,16 @@ const NewList = () => {
                                 required
                             />
 
-                           <button className={"submit-btn"} type="submit">
+                            <button className={"submit-btn"} type="submit">
                                 Add
                             </button>
 
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>
 
-</>
+        </>
     );
 }
 
