@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {useNavigate, useParams} from "react-router-dom";
 
 export const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
-    const {shopListId} = useParams();
     const [userName, setUserName] = useState(null)
-    const [sortAlph, setSortAlph] = useState(null)
+    const [sortAlphabet, setSortAlphabet] = useState(null)
     useEffect(() => {
 
         getUser()
@@ -29,21 +27,21 @@ const AuthProvider = ({children}) => {
     const login = (userName) => {
         setUserName(userName);
     }
-    const alph = (shopListId) => {
+    const alphabet = (shopListId) => {
         getStatusSort(shopListId)
             .then(shopList =>{
-                setSortAlph(shopList.data)
+                setSortAlphabet(shopList.data)
             })
     }
-    const category = (shopListId) => {
-        setSortAlph(false);
+    const category = () => {
+        setSortAlphabet(false);
     }
 
     const logout = () => {
         setUserName(null);
     }
     return (
-        <AuthContext.Provider value={{userName, category, login, logout,alph,sortAlph}}>
+        <AuthContext.Provider value={{userName, category, login, logout,alph: alphabet,sortAlph: sortAlphabet}}>
             {children}
         </AuthContext.Provider>
     )

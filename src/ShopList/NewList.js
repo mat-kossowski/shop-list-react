@@ -1,34 +1,27 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import ShopListService from "./shopList.service";
+import appService from "../service/app.service";
 
 
 const NewList = () => {
-    const [errors, setErrors] = useState("");
+
     const navigate = useNavigate();
     const [form, setForm] = useState({
         listName: ""
     });
     const {listName} = form;
 
-    function handleChange(e) {
-        console.log("to")
-
-        setForm({...form, [e.target.name]: e.target.value});
-    }
-
+    const handleChange = appService.handleChange(setForm, form)
 
     function handleSubmit(e) {
-        // e.preventDefault();
-        console.log("tu")
+        e.preventDefault();
         ShopListService.createList({listName: listName})
             .then(res => {
                 console.log("Request complete! response:", res);
             }).catch((error) => {
             console.log("creating message error", error);
-            setErrors("creation error");
         });
-        setErrors("created successfully");
         setTimeout(() => {
             navigate('/shopLists')
         }, 100)

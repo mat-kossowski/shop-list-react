@@ -1,4 +1,4 @@
-.Navbar {
+.navbar {
     position: sticky;
     z-index: 100;
     top: 0;
@@ -10,7 +10,7 @@
 
 }
 
-.NavbarContainer {
+.navbarContainer {
     text-align: left;
     position: relative;
     width: 100%;
@@ -22,7 +22,7 @@
 
 }
 
-.NavbarSmallContainer {
+.navbarSmallContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,7 +32,7 @@
     align-items: center;
 }
 
-.ApplicationName {
+.applicationName {
     width: 50%;
     height: 100%;
     float: left;
@@ -46,20 +46,20 @@
     color: #FFFFFF;
 }
 
-.ApplicationName a {
+.applicationName a {
     text-decoration: none;
     color: white;
     font-family: 'Megrim', cursive;
 }
 
-.IconsContainer {
+.iconsContainer {
     margin-left: auto;
     margin-right: 15px;
     float: left;
     text-align: right;
 }
 
-.MyIcon {
+.myIcon {
     width: 40px;
     height: 40px;
     text-align: center;
@@ -73,7 +73,7 @@
 
 }
 
-.IconImage {
+.iconImage {
 
     height: 32px;
     margin: 4px;
@@ -81,12 +81,12 @@
 }
 
 @media (max-width: 882px) {
-    .NavbarContainer {
+    .navbarContainer {
 
         height: 30px;
     }
 
-    .ApplicationName {
+    .applicationName {
         font-size: 20px;
         line-height: 30px;
     }
@@ -94,13 +94,13 @@
 }
 
 @media (max-width: 880px) {
-    .MyIcon {
+    .myIcon {
         width: 20px;
         height: 20px;
         margin-left: 3px;
     }
 
-    .IconImage {
+    .iconImage {
 
         height: 14px;
         margin: 0 0 6px;
@@ -110,7 +110,7 @@
 
 @media (max-width: 441px) {
 
-    .ApplicationName {
+    .applicationName {
         font-size: 15px;
         line-height: 30px;
     }
@@ -118,7 +118,7 @@
 }
 
 
-.MyList {
+.myList {
     float: left;
     width: 30%;
     height: 100%;
@@ -126,7 +126,7 @@
 
 }
 
-.MyLogin {
+.myLogin {
     width: 30%;
     height: 100%;
     float: left;
@@ -135,7 +135,7 @@
 
 }
 
-.MyList a {
+.myList a {
     text-decoration: none;
     color: white;
 }

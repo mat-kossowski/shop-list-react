@@ -1,13 +1,15 @@
 import {useNavigate, useParams} from "react-router-dom";
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 import ShopListService from "./shopList.service";
-
+import appService from "../service/app.service";
 
 
 const Entrusting = () =>{
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const {shopListId} = useParams();
+    const [shopList, setShopList] = useState([]);
+
     const initial = {
         userName: ""
 
@@ -15,29 +17,14 @@ const Entrusting = () =>{
 
     const [form, setForm] = useState(initial);
     const {userName}  = form;
+    const handleChange = appService.handleChangeName(setForm, form)
 
+    useEffect(()=>{
+        ShopListService.getList(shopListId)
+            .then(res => setShopList(res.data))
+            .then(r => console.log(r));
+    },[])
 
-    function handleChange(e) {
-
-
-        const {name, value} = e.target;
-        console.log(name)
-        console.log(value)
-        if (value === "") {
-            setForm(() => {
-                return {
-                    ...form, [name]: ""
-                };
-            });
-        } else {
-            setForm(() => {
-                return {
-                    ...form, [name]: value
-                };
-            });
-        }
-
-    }
     const handleEntrusting = (e) => {
         e.preventDefault();
         ShopListService.entrustingShopList(shopListId, {
@@ -59,7 +46,7 @@ return(
         <div>
 
             <div>
-                {/*<h3>{list.listName}</h3>*/}
+                <h3>{shopList.listName}</h3>
             </div>
             <div>
                 <div >

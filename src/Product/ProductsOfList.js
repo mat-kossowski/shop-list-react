@@ -1,11 +1,10 @@
 import Product from './Product';
 import './product.css';
-import {useContext, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import ProductService from "./product.service";
 import ShopListService from "../ShopList/shopList.service";
 import {Link, useParams} from "react-router-dom";
-import product from "./Product";
-import {AuthContext} from "../ProtectedRoutes/auth";
+
 import appService from "../service/app.service";
 
 
@@ -16,26 +15,12 @@ const ProductsOfList = () => {
     const [sortAlphabet, setSortAlphabet] = useState();
 
     useEffect(() => {
-
         ShopListService.getStatusSort(shopListId)
             .then(res => setSortAlphabet(res.data));
         ShopListService.getStatusSort(shopListId)
             .then(res => sort(res.data));
-
-
     }, []);
 
-    const sort = (x) => {
-        if (x === true) {
-            ProductService.getProductsAlphabet(shopListId)
-                .then(res => setList(res.data))
-                .then(r => console.log(r));
-        } else {
-            ProductService.getProductsCategory(shopListId)
-                .then(res => setList(res.data))
-                .then(r => console.log(r));
-        }
-    }
     const onDelete = productId => {
         ProductService.deleteProduct(productId)
             .then(res => {
@@ -65,56 +50,12 @@ const ProductsOfList = () => {
             });
     }
 
+    const sort = appService.sort(shopListId,setList)
+    const clickSortAlphabet = appService.clickSortAlphabet(setSortAlphabet,setList, list)
+    const clickSortCategory = appService.clickSortCategory(setSortAlphabet,setList, list)
+    const clickStatusProduct = appService.clickStatusProduct(setList,sortAlphabet,list)
+    const clickDeleteItem = appService.clickDeleteItem(setList, list)
 
-    const clickSortAlphabet = () => {
-        setSortAlphabet(true)
-        let newLists = [...list];
-        newLists
-            .sort(sortByCategory)
-        newLists
-            .sort(sortByName)
-
-        setList(newLists)
-
-    }
-
-    const clickSortCategory = () => {
-        setSortAlphabet(false)
-        let newLists = [...list];
-        newLists
-            .sort(sortByCategory)
-
-        setList(newLists)
-    }
-    const clickDeleteItem = (productId) => {
-        let newLists = [...list];
-        newLists = list.filter(product => product.productId !== productId)
-        setList(newLists);
-    };
-
-
-    const sortByName = appService.sortByName()
-    const sortByCategory = appService.sortByCategory()
-
-
-    const clickStatusProduct = (productId) => {
-        let newLists = [...list];
-        newLists
-            .filter(product => product.productId === productId)
-            .map(product => !product.productStatus ? product.productStatus = true : product.productStatus = false)
-        if (sortAlphabet === true) {
-            newLists
-                .sort(sortByName)
-        } else {
-            newLists
-                .sort(sortByName)
-            newLists
-                .sort(sortByCategory)
-        }
-
-        setList(newLists)
-
-    }
 
     return (
         <>
@@ -134,7 +75,7 @@ const ProductsOfList = () => {
 
 
             </div>
-            <div className="Messages">
+            <div className="productOfListContainer">
                 <div className={"collectionProducts"}>
                     <div>
                         {list
@@ -147,8 +88,7 @@ const ProductsOfList = () => {
                                         onDelete={onDelete}
                                         updateProductStatus={updateProductStatus}
                                         clickDeleteItem={clickDeleteItem}
-                                        key={product.productId}
-                                        // refresh={refresh}
+                                        key={product}
                                     />
                                 </>
                             })}
@@ -156,7 +96,7 @@ const ProductsOfList = () => {
 
                 </div>
             </div>
-            <div className="Messages">
+            <div className="productOfListContainer">
                 <div>
 
                     <div className={"collectionProducts"} style={{background: "grey"}}>

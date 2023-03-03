@@ -19,8 +19,7 @@ function ShopLists() {
             .then(r => console.log(r));
     }, []);
 
-console.log(shopLists)
-    const onDelete = shopListId=> {
+    const onDelete = shopListId => {
         ShopListService.deleteShopList(shopListId)
             .then(res => {
                 console.log("Request complete! response:", res);
@@ -32,7 +31,6 @@ console.log(shopLists)
     const clickDeleteItem = (shopListId) => {
         let newLists = [...shopLists];
         newLists = shopLists.filter(shopList => shopList.shopListId !== shopListId);
-
         setShopLists(newLists);
     };
 
@@ -41,25 +39,27 @@ console.log(shopLists)
             <div className={"containerOfShopLists"}>
                 <div><h1>TWOJE LISTY ZAKUPÓW</h1></div>
 
-            <div className="boxOfShopLists">
-                {shopLists.map((shopList) => {
-                    return<>
+                <div className="boxOfShopLists">
+                    {shopLists.map(function (shopList) {
+                        return <React.Fragment key={shopList.shopListId}>
 
-                        <ShopList
-                            key={shopList.shopListId}
-                            shopList={shopList}
-                            onDelete={onDelete}
-                            clickDeleteItem={clickDeleteItem}
-                    />
 
-                </>
-                })}
-            </div>
+                                <ShopList
+                                    key={shopList.shopListId}
+                                    shopList={shopList}
+                                    onDelete={onDelete}
+                                    clickDeleteItem={clickDeleteItem}
+                                />
+
+
+                        </React.Fragment>
+                    })}
+                </div>
                 <div>
                     <Link to="/shopList/new">Add new</Link>
                 </div>
 
-        </div>
+            </div>
         </>
     );
 }

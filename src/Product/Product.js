@@ -57,7 +57,7 @@ function Product({product, onDelete, clickDeleteItem, clickStatusProduct, update
                                value={productName}
                                required
                         />
-                        <input className={"productAmount"}
+                        <input className={"inputProductAmount"}
                                type="number"
                                name="productAmount"
                                placeholder="productAmount"
@@ -65,7 +65,7 @@ function Product({product, onDelete, clickDeleteItem, clickStatusProduct, update
                                onChange={handleChange}
                                required
                         />
-                        <input className={"productUnit"}
+                        <input className={"inputProductUnit"}
                                type="text"
                                name="productUnit"
                                placeholder="productUnit"
@@ -73,17 +73,17 @@ function Product({product, onDelete, clickDeleteItem, clickStatusProduct, update
                                onChange={handleChange}
                                required
                         />
-                        <div className={"MyIconsProduct"}>
-                            <button className={"MyIconProduct"} onClick={() => {
+                        <div className={"myIconsProduct"}>
+                            <button className={"myIconProduct"} onClick={() => {
                                 handleUpdateItem()
                                 reload()
                             }}>
                                 Update
                             </button>
-                            <button className={"MyIconProduct"} onClick={toggleEditMode}>
+                            <button className={"myIconProduct"} onClick={toggleEditMode}>
                                 Cancel
                             </button>
-                            <button className={"MyIconCategory"}>
+                            <button className={"myIconCategory"}>
                                 {product.category}
                             </button>
                         </div>
@@ -102,23 +102,23 @@ function Product({product, onDelete, clickDeleteItem, clickStatusProduct, update
                             <p>{productName}</p>
                         }
                     </div>
-                    <div className={"productAmount"}>
+                    <div className={"inputProductAmount"}>
                         {productAmount}
                     </div>
-                    <div className={"productUnit"}>
+                    <div className={"inputProductUnit"}>
                         {productUnit}
                     </div>
-                    <div className={"MyIconsProduct"}>
-                        <button className={"MyIconProduct"} onClick={toggleEditMode}>
-                            <img className={"IconImageProduct"} src={edit} alt={'shopping list'}/>
+                    <div className={"myIconsProduct"}>
+                        <button className={"myIconProduct"} onClick={toggleEditMode}>
+                            <img className={"iconImageProduct"} src={edit} alt={'shopping list'}/>
                         </button>
-                        <button className={"MyIconProduct"} onClick={() => {
+                        <button className={"myIconProduct"} onClick={() => {
                             onDelete(product.productId)
                             clickDeleteItem(product.productId)
                         }}>
-                            <img className={"IconImageProduct"} src={iconDelete} alt={'shopping list'}/>
+                            <img className={"iconImageProduct"} src={iconDelete} alt={'shopping list'}/>
                         </button>
-                        <button className={"MyIconCategory"}>
+                        <button className={"myIconCategory"}>
                             {product.category}
                         </button>
                     </div>

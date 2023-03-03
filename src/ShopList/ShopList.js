@@ -31,20 +31,18 @@ function ShopList({shopList, onDelete, clickDeleteItem}) {
             }).catch((error) => {
             console.log("creating message error", error);
         });
-
         toggleEditMode();
-
-
     }
     const reload = appService.reload(setForm, form)
     const handleChangeName = appService.handleChangeName(setForm, form)
 
 
     return (
+        <>
         <div className={"oneShopList"}>
             {editMode ? (
 
-                    <div >
+                    <div>
                         <form className={"product"} onSubmit={handleUpdateItem}>
                             <input className={"productDiv"}
                                    type="text"
@@ -54,56 +52,51 @@ function ShopList({shopList, onDelete, clickDeleteItem}) {
                                    value={listName}
                                    required
                             />
-                            <div className={"MyIconsProduct"}>
-                                <button className={"MyIconProduct"} onClick={()=>{
+                            <div className={"myIconsProduct"}>
+                                <button className={"myIconProduct"} onClick={() => {
                                     handleUpdateItem()
                                     reload()
                                 }}>
                                     Update
                                 </button>
 
-                                <button className={"MyIconProduct"} onClick={toggleEditMode}>
+                                <button className={"myIconProduct"} onClick={toggleEditMode}>
                                     Cancel
                                 </button>
-
                             </div>
                         </form>
                     </div>
-            ) :
-                 (
-                     <div>
 
-                         <Link to={`/shopList/${shopList.shopListId}`}>
-                             <div className={"shopListName"}>
-                                 <h3>{listName}</h3>
-                             </div>
-                         </Link>
-                         <div className={"MyIconsProduct"}>
-                             <button className={"MyIconShopList"}
-                                 onClick={toggleEditMode}
-                             >
+                ) :
+                (
+                    <div>
 
-                                 <img className={"IconImageShopList"} src={edit} alt={'shopping list'}/>
-                             </button>
+                        <Link to={`/shopList/${shopList.shopListId}`}>
+                            <div className={"shopListName"}>
+                                <h3>{listName}</h3>
+                            </div>
+                        </Link>
+                        <div className={"myIconsProduct"}>
+                            <button className={"MyIconShopList"} onClick={toggleEditMode}>
+                                <img className={"IconImageShopList"} src={edit} alt={'shopping list'}/>
+                            </button>
 
+                            <button className={"myIconProduct"}
+                                    onClick={() => {
+                                        onDelete(shopList.shopListId)
+                                        clickDeleteItem(shopList.shopListId)
+                                    }}>
+                                <img className={"MyIconShopList"} src={iconDelete} alt={'shopping list'}/>
+                            </button>
+                            <a href={`/shopList/entrusting/${shopList.shopListId}`}>
+                                Udostepnij Listę
+                            </a>
+                        </div>
+                    </div>
 
-                             <button className={"MyIconProduct"}
-                                     onClick={() => {
-                                         onDelete(shopList.shopListId)
-                                         clickDeleteItem(shopList.shopListId)
-                                     }}
-                             >
-                                 <img className={"MyIconShopList"} src={iconDelete} alt={'shopping list'}/>
-                             </button>
-                             <a href={`/shopList/entrusting/${shopList.shopListId}`}
-
-                             >Udostepnij Listę</a>
-
-                         </div>
-                     </div>
-
-            )}
+                )}
         </div>
+            </>
     );
 }
 
