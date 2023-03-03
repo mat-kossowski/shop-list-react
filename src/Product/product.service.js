@@ -32,22 +32,11 @@ const addProduct = (shopListId,{productName,productAmount,category }) => {
 
 
 const deleteProduct = (productId) => {
-    let customConfig = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
     return axios.delete(API_URL + "/"+ productId);
 
 }
 
 const updateProductStatus=(productId) =>{
-    let customConfig = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
     return axios.put(API_URL + "/status/"+ productId);
 }
 const updateProduct = ({productId, productName,productAmount,productUnit }) => {

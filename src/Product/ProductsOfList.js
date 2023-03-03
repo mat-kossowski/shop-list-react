@@ -1,6 +1,6 @@
 import Product from './Product';
 import './product.css';
-import { useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import ProductService from "./product.service";
 import ShopListService from "../ShopList/shopList.service";
 import {Link, useParams} from "react-router-dom";
@@ -16,9 +16,11 @@ const ProductsOfList = () => {
 
     useEffect(() => {
         ShopListService.getStatusSort(shopListId)
-            .then(res => setSortAlphabet(res.data));
+            .then(res => setSortAlphabet(res.data))
+            .then(r => console.log(r));
         ShopListService.getStatusSort(shopListId)
-            .then(res => sort(res.data));
+            .then(res => sort(res.data))
+            .then(r => console.log(r));
     }, []);
 
     const onDelete = productId => {
@@ -50,10 +52,10 @@ const ProductsOfList = () => {
             });
     }
 
-    const sort = appService.sort(shopListId,setList)
-    const clickSortAlphabet = appService.clickSortAlphabet(setSortAlphabet,setList, list)
-    const clickSortCategory = appService.clickSortCategory(setSortAlphabet,setList, list)
-    const clickStatusProduct = appService.clickStatusProduct(setList,sortAlphabet,list)
+    const sort = appService.sort(shopListId, setList)
+    const clickSortAlphabet = appService.clickSortAlphabet(setSortAlphabet, setList, list)
+    const clickSortCategory = appService.clickSortCategory(setSortAlphabet, setList, list)
+    const clickStatusProduct = appService.clickStatusProduct(setList, sortAlphabet, list)
     const clickDeleteItem = appService.clickDeleteItem(setList, list)
 
 
@@ -81,16 +83,15 @@ const ProductsOfList = () => {
                         {list
                             .filter(product => product.productStatus === false)
                             .map(product => {
-                                return <>
-                                    <Product
-                                        product={product}
-                                        clickStatusProduct={clickStatusProduct}
-                                        onDelete={onDelete}
-                                        updateProductStatus={updateProductStatus}
-                                        clickDeleteItem={clickDeleteItem}
-                                        key={product}
-                                    />
-                                </>
+                                return <Product
+                                    product={product}
+                                    clickStatusProduct={clickStatusProduct}
+                                    onDelete={onDelete}
+                                    updateProductStatus={updateProductStatus}
+                                    clickDeleteItem={clickDeleteItem}
+                                    key={product.productId}
+                                />
+
                             })}
                     </div>
 
@@ -104,17 +105,15 @@ const ProductsOfList = () => {
                             {list
                                 .filter(product => product.productStatus === true)
                                 .map(product => {
+                                    return <Product
+                                        product={product}
+                                        clickStatusProduct={clickStatusProduct}
+                                        onDelete={onDelete}
+                                        updateProductStatus={updateProductStatus}
+                                        clickDeleteItem={clickDeleteItem}
+                                        key={product.productId}
+                                    />
 
-                                    return <>
-                                        <Product
-                                            product={product}
-                                            clickStatusProduct={clickStatusProduct}
-                                            onDelete={onDelete}
-                                            updateProductStatus={updateProductStatus}
-                                            clickDeleteItem={clickDeleteItem}
-                                            key={product.productId}
-                                        />
-                                    </>
                                 })}
                         </div>
                     </div>

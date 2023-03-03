@@ -29,15 +29,15 @@ function ShopLists() {
             });
     }
     const clickDeleteItem = (shopListId) => {
-        let newLists = [...shopLists];
-        newLists = shopLists.filter(shopList => shopList.shopListId !== shopListId);
-        setShopLists(newLists);
+        setShopLists(shopLists.filter(shopList => shopList.shopListId !== shopListId));
     };
 
     return (
         <>
             <div className={"containerOfShopLists"}>
-                <div><h1>TWOJE LISTY ZAKUPÓW</h1></div>
+                <div>
+                    <h1>TWOJE LISTY ZAKUPÓW</h1>
+                </div>
 
                 <div className="boxOfShopLists">
                     {shopLists.map(function (shopList) {
@@ -45,7 +45,7 @@ function ShopLists() {
 
 
                                 <ShopList
-                                    key={shopList.shopListId}
+
                                     shopList={shopList}
                                     onDelete={onDelete}
                                     clickDeleteItem={clickDeleteItem}

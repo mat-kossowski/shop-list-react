@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 const ButtonB = ({ color, text, onClick }) => {
-  let px;
+
   return (
     <button
       onClick={onClick}

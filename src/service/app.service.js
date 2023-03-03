@@ -57,35 +57,35 @@ const clickStatusProduct = (setList, sortAlphabet, list) => {
     }
 }
 
-const sort = (shopListId, setList ) => {
-    return function (x){
-    if (x === true) {
-        ProductService.getProductsAlphabet(shopListId)
-            .then(res => setList(res.data))
-            .then(r => console.log(r));
-    } else {
-        ProductService.getProductsCategory(shopListId)
-            .then(res => setList(res.data))
-            .then(r => console.log(r));
-    }
+const sort = (shopListId, setList) => {
+    return function (x) {
+        if (x === true) {
+            ProductService.getProductsAlphabet(shopListId)
+                .then(res => setList(res.data))
+                .then(r => console.log(r));
+        } else {
+            ProductService.getProductsCategory(shopListId)
+                .then(res => setList(res.data))
+                .then(r => console.log(r));
+        }
     }
 }
 
 const sortByName = (a, b) => {
-        const n1 = a.productName.toLowerCase()
-        const n2 = b.productName.toLowerCase()
-        if (n1 < n2) return -1;
-        if (n1 > n2) return 1;
-        return 0;
+    const n1 = a.productName.toLowerCase()
+    const n2 = b.productName.toLowerCase()
+    if (n1 < n2) return -1;
+    if (n1 > n2) return 1;
+    return 0;
 
 }
 
-const sortByCategory = (a,b) => {
-        const n1 = a.category
-        const n2 = b.category
-        if (n1 < n2) return -1;
-        if (n1 > n2) return 1;
-        return 0;
+const sortByCategory = (a, b) => {
+    const n1 = a.category
+    const n2 = b.category
+    if (n1 < n2) return -1;
+    if (n1 > n2) return 1;
+    return 0;
 
 }
 
@@ -93,7 +93,6 @@ const clickSortAlphabet = (setSortAlphabet, setList, list) => {
     return function () {
         setSortAlphabet(true)
         let newLists = [...list];
-        console.log(newLists)
         newLists
             .sort(sortByCategory)
         newLists
@@ -108,14 +107,13 @@ const clickSortCategory = (setSortAlphabet, setList, list) => {
         newLists
             .sort(sortByCategory)
         setList(newLists)
+
     }
 }
 const clickDeleteItem = (setList, list) => {
-    return function (productId){
-    let newLists = [...list];
-    newLists = list.filter(product => product.productId !== productId)
-    setList(newLists);
-}
+    return function (productId) {
+        setList(list.filter(product => product.productId !== productId));
+    }
 };
 
 

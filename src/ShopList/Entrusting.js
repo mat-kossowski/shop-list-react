@@ -23,7 +23,7 @@ const Entrusting = () =>{
         ShopListService.getList(shopListId)
             .then(res => setShopList(res.data))
             .then(r => console.log(r));
-    },[])
+    })
 
     const handleEntrusting = (e) => {
         e.preventDefault();

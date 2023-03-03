@@ -30,7 +30,7 @@ const App = () => {
                         <Route path="/shopList/new" element={<NewList/>}/>
                         <Route path="/product/new/:shopListId" element={<NewProduct/>}/>
                         <Route path="/shopList/entrusting/:shopListId" element={<Entrusting/>}/>
-                        <Route exact path="/shopList/:shopListId" element={<ProductsOfList/>}/>
+                        <Route exact path='/shopList/:shopListId' element={<ProductsOfList/>}/>
                     </Routes>
                 </BrowserRouter>
             </div>

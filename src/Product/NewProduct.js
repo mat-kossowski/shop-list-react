@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import ProductService from "./product.service";
 import {Select, MenuItem} from "@material-ui/core";
-import productService from "./product.service";
 import appService from "../service/app.service";
 
 
