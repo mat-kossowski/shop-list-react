@@ -1,14 +1,14 @@
-*
-{
-    margin:  0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins, sans-serif', serif;
 }
-section{
+
+section {
     position: relative;
     min-height: 100vh;
-    background: #557085;
+    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,19 +16,18 @@ section{
     transition: 0.5s;
 
 }
-section.active{
-    background: #3e3f39;
-}
-section .PageLoginContainer{
+
+section .PageLoginContainer {
     text-align: left;
     position: relative;
     width: 800px;
     height: 500px;
     background: #fff;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.45);
     overflow: hidden;
 }
-section .PageLoginContainer .user{
+
+section .PageLoginContainer .user {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,13 +35,15 @@ section .PageLoginContainer .user{
     height: 100%;
     display: flex;
 }
-section .PageLoginContainer .user .imgBx{
+
+section .PageLoginContainer .user .imgBx {
     position: relative;
     width: 50%;
     height: 100%;
     transition: 0.5s;
 }
-section .PageLoginContainer .user .imgBx img{
+
+section .PageLoginContainer .user .imgBx img {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +51,8 @@ section .PageLoginContainer .user .imgBx img{
     height: 100%;
     object-fit: cover;
 }
-section .PageLoginContainer .user .formBx{
+
+section .PageLoginContainer .user .formBx {
     position: relative;
     width: 50%;
     height: 100%;
@@ -60,103 +62,190 @@ section .PageLoginContainer .user .formBx{
     align-items: center;
     padding: 40px;
     transition: 0.5s;
+    margin: 0;
 }
-section .PageLoginContainer .user .formBx h2{
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+
+section .PageLoginContainer .user .formBx h2 {
+    text-align: left;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 54px;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+section .PageLoginContainer .user .formBx .aaa h4 {
     text-align: center;
     width: 100%;
-    margin-bottom: 10px;
-    color: #555;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 54px;
+    color: #000000;
+    margin-bottom: 40px;
 }
-section .PageLoginContainer .user .formBx input{
+
+section .PageLoginContainer .user .formBx input {
     width: 100%;
     padding: 10px;
-    background: #f5f5f5;
-    color: #333;
-    border: none;
-    outline: none;
+    background: #FFFFFF;
     font-size: 14px;
-    margin: 8px 0;
-    letter-spacing: 1px;
     font-weight: 300;
+    border: 1px solid #737575;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-section .PageLoginContainer .user .formBx input[type="submit"]{
-    max-width: 100px;
-    background: #677eff;
+
+section .PageLoginContainer .user .formBx h3 {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 35px;
+    color: #737575;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+section .PageLoginContainer .user .formBx p {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    color: #737575;
+    text-align: left;
+    margin: 0;
+
+}
+
+section .PageLoginContainer .user .formBx .aaa {
+    width: 100%;
+    text-align: center;
+
+}
+
+section .PageLoginContainer .user .formBx button {
+    width: 80%;
+    height: 40px;
     color: #fff;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 1px;
     transition: 0.5s;
-}
-section .PageLoginContainer .user.signupBx .formBx input[type="submit"]{
-    background: #e73e49;
+    background: #0fa739;
+    border: 1px solid #737575;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    line-height: 15px;
 }
 
-section .PageLoginContainer .user .formBx .signup{
-    position: relative;
-    margin-top: 20px;
-    font-size: 12px;
+
+section .PageLoginContainer .user .formBx input[type="submit"] {
+    width: 100%;
+    background: #0fa739;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 1px;
-    color: #555;
-    text-transform: uppercase;
-    font-weight: 300;
+    transition: 0.5s;
+    font-family: Inter, sans-serif;
+   margin-top: 18px;
 }
-section .PageLoginContainer .user .formBx .signup a{
-    font-weight: 600;
+
+section .PageLoginContainer .user.signupBx .formBx input[type="submit"] {
+    background: #0fa739;
+}
+
+section .PageLoginContainer .user .formBx .signup {
+    border-top: 1px solid #737575;
+    position: relative;
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+    font-family: Inter, sans-serif;
+    text-align: center;
+    padding-top: 15px;
+
+
+}
+
+section .PageLoginContainer .user .formBx .signup a {
+    font-weight: 700;
+    font-family: Inter, sans-serif;
     text-decoration: none;
-    color: #577eff;
+    color: #737575;
+
 }
-section .PageLoginContainer .signupBx{
+
+section .PageLoginContainer .signupBx {
     pointer-events: none;
 }
-section .PageLoginContainer.active .signupBx{
+
+section .PageLoginContainer.active .signupBx {
     pointer-events: initial;
 }
-section .PageLoginContainer .signupBx .formBx{
-    top:100%;
-}
-section .PageLoginContainer.active .signupBx .formBx{
-    top:0;
-}
-section .PageLoginContainer .signupBx .imgBx{
-    top:-100%;
-    transition: 0.5s;
-}
-section .PageLoginContainer.active .signupBx .imgBx{
-    top:0;
-}
 
-section .PageLoginContainer .signInBx .formBx{
-    top: 0;
-}
-section .PageLoginContainer.active .signInBx .formBx{
+section .PageLoginContainer .signupBx .formBx {
     top: 100%;
 }
-section .PageLoginContainer .signInBx .imgBx{
+
+section .PageLoginContainer.active .signupBx .formBx {
+    top: 0;
+}
+
+section .PageLoginContainer .signupBx .imgBx {
+    top: -100%;
+    transition: 0.5s;
+}
+
+section .PageLoginContainer.active .signupBx .imgBx {
+    top: 0;
+}
+
+section .PageLoginContainer .signInBx .formBx {
+    top: 0;
+}
+
+section .PageLoginContainer.active .signInBx .formBx {
+    top: 100%;
+}
+
+section .PageLoginContainer .signInBx .imgBx {
     top: 0;
     transition: 0.5s;
 }
-section .PageLoginContainer.active .signInBx .imgBx{
+
+section .PageLoginContainer.active .signInBx .imgBx {
     top: -100%;
 }
+
 @media (max-width: 991px) {
 
-    section .PageLoginContainer{
+    section .PageLoginContainer {
         max-width: 400px;
     }
-    section .PageLoginContainer .imgBx{
+
+    section .PageLoginContainer .imgBx {
         display: none;
     }
-    section .PageLoginContainer .user .formBx{
+
+    section .PageLoginContainer .user .formBx {
         width: 100%;
     }
-    section .PageLoginContainer.active .signInBx .formBx{
-        top:-100%;
+
+    section .PageLoginContainer.active .signInBx .formBx {
+        top: -100%;
     }
 }
 

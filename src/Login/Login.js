@@ -38,20 +38,23 @@ export default function Login({toggleForm}) {
                 <div className={"imgBx"}><img src={signImage} alt={"key"}/></div>
                 <div className={"formBx"}>
                     <form onSubmit={submitForm}>
-                        <h2>Sign In</h2>
-                        <input placeholder={"UserName"} type={"text"}
+                        <h2>Log in</h2>
+                        <p>User Name</p>
+                        <input  type={"text"}
                                value={userName}
                                onChange={(e) => setUserName(e.target.value)}
                                required/>
-                        <input placeholder={"Password"} type={"password"}
+                        <p>Password</p>
+                        <input type={"password"}
                                value={password}
                                onChange={(e) => setPassword(e.target.value)}
                                required/>
-                        <input type={"submit"} value={"Login"}/>
+                        <input type={"submit"} value={"Log in"}/>
 
-                        <p className={"signup"}>don't have an account?
-                            <a href={"#"} onClick={() => toggleForm()}>Sign
-                                up.</a>
+                        <p className={"signup"}>Don't have account any yet? <br />
+                            <a href={"#"}
+                               onClick={() => toggleForm()}> Sign
+                                up!</a>
                         </p>
                     </form>
                 </div>
