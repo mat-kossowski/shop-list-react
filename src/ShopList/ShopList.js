@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import './shopList.css'
 import edit from "../image/edit.png";
 import iconDelete from "../image/delete.png";
+import iconShare from "../image/share.png"
+import iconCheck from "../image/checkbox.png"
+import iconRemove from "../image/remove.png"
 import {Link} from "react-router-dom";
 import ShopListService from "./shopList.service";
 import appService from "../service/app.service";
@@ -39,64 +42,76 @@ function ShopList({shopList, onDelete, clickDeleteItem}) {
 
     return (
         <>
-        <div className={"oneShopList"}>
-            {editMode ? (
+            <div className={"containerOneShopList"}>
+                {editMode ? (
 
-                    <div>
-                        <form className={"product"} onSubmit={handleUpdateItem}>
-                            <input className={"productDiv"}
-                                   type="text"
-                                   name="listName"
-                                   placeholder="listName"
-                                   onChange={handleChangeName}
-                                   value={listName}
-                                   required
-                            />
-                            <div className={"myIconsProduct"}>
-                                <button className={"myIconProduct"} onClick={() => {
-                                    handleUpdateItem()
-                                    reload()
-                                }}>
-                                    Update
-                                </button>
+                        <div className={"oneShopList"}>
+                            <form className={"formList"} onSubmit={handleUpdateItem}>
+                                <div className={"shopListName"}>
 
-                                <button className={"myIconProduct"} onClick={toggleEditMode}>
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
 
-                ) :
-                (
-                    <div>
-
-                        <Link to={`/shopList/${shopList.shopListId}`}>
-                            <div className={"shopListName"}>
-                                <h3>{listName}</h3>
-                            </div>
-                        </Link>
-                        <div className={"myIconsProduct"}>
-                            <button className={"MyIconShopList"} onClick={toggleEditMode}>
-                                <img className={"IconImageShopList"} src={edit} alt={'shopping list'}/>
-                            </button>
-
-                            <button className={"myIconProduct"}
-                                    onClick={() => {
-                                        onDelete(shopList.shopListId)
-                                        clickDeleteItem(shopList.shopListId)
+                                    <input
+                                           type="text"
+                                           name="listName"
+                                           placeholder="listName"
+                                           onChange={handleChangeName}
+                                           value={listName}
+                                           required
+                                    />
+                                </div>
+                                <div className={"myIconsProduct"} style={{width:"20%",marginLeft:"15px"}}>
+                                    <div className={"myIcon"} onClick={() => {
+                                        handleUpdateItem()
+                                        reload()
                                     }}>
-                                <img className={"MyIconShopList"} src={iconDelete} alt={'shopping list'}/>
-                            </button>
-                            <a href={`/shopList/entrusting/${shopList.shopListId}`}>
-                                Udostepnij Listę
-                            </a>
-                        </div>
-                    </div>
+                                        <img className={"iconImage"} src={iconCheck} alt={'shopping list'}/>
+                                    </div>
 
-                )}
-        </div>
-            </>
+                                    <div className={"myIcon"} onClick={toggleEditMode}>
+                                        <img className={"iconImage"} src={iconRemove} alt={'shopping list'}/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    ) :
+                    (
+                        <div className={"oneShopList"}>
+
+
+                            <div className={"shopListName"}>
+                                <Link to={`/shopList/${shopList.shopListId}`}>
+                                    <h3>{listName}</h3>
+
+                                </Link>
+                            </div>
+                            <div className={"myIconsProduct"}>
+                                <div className={"myIcon"} onClick={toggleEditMode}>
+                                    <img className={"iconImage"} src={edit} alt={'shopping list'}/>
+                                </div>
+                                <div className={"myIcon"}>
+                                    <Link to={`/shopList/entrusting/${shopList.shopListId}`}>
+                                        <img className={"iconImage"} src={iconShare} alt={'shopping list'}/>
+                                    </Link>
+                                </div>
+
+
+                                <div className={"myIcon"}
+                                     onClick={() => {
+                                         onDelete(shopList.shopListId)
+                                         clickDeleteItem(shopList.shopListId)
+                                     }}>
+                                    <img className={"iconImage"} src={iconDelete} alt={'shopping list'}/>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    )}
+            </div>
+        </>
     );
 }
 

@@ -3,6 +3,8 @@
 .App {
   text-align: center;
   background-image:  url('/src/image/tlo.jpg');
+  /*background-size:contain;*/
+  background-size: cover;
   height: 100vh;
 }
 

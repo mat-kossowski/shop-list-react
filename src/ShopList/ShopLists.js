@@ -35,10 +35,14 @@ function ShopLists() {
     return (
         <>
             <div className={"containerOfShopLists"}>
-                <div>
-                    <h1>TWOJE LISTY ZAKUPÓW</h1>
+                <div className={"titleList"}>
+                    <h1>MOJE LISTY</h1>
                 </div>
-
+                <div>
+                    <Link to="/shopList/new">
+                        <button>+ NOWA LISTA</button>
+                    </Link>
+                </div>
                 <div className="boxOfShopLists">
                     {shopLists.map(function (shopList) {
                         return <React.Fragment key={shopList.shopListId}>
@@ -55,9 +59,7 @@ function ShopLists() {
                         </React.Fragment>
                     })}
                 </div>
-                <div>
-                    <Link to="/shopList/new">Add new</Link>
-                </div>
+
 
             </div>
         </>
