@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import ShopListService from "./shopList.service";
 import appService from "../service/app.service";
+import checkList from "../image/checkbox.png"
 
 
 const NewList = () => {
@@ -32,27 +33,32 @@ const NewList = () => {
         <>
 
             <div className={"wrapper-container"}>
-                <div className={"outer-box"}>
-                    <div className={"inner-box"}>
-                        <h1 className={"title"}>Stwórz nowa listę</h1>
+                <div className={"pageName"}>
+                    <h1 className={"title"}>KREATOR LISTY ZAKUPÓW</h1>
+                </div>
 
+                    <div className={"inner-box"}>
+                        <div className={"newListFrom"}>
                         <form onSubmit={handleSubmit}>
+                            <div className={"inputList"}>
                             <input
                                 type="text"
                                 name="listName"
-                                placeholder="listName"
+                                placeholder="Nazwa Listy"
                                 value={listName}
                                 onChange={handleChange}
                                 required
                             />
-
-                            <button className={"submit-btn"} type="submit">
-                                Add
+                        </div>
+                            <div className={"buttonList"}>
+                            <button  type="submit">
+                                <img className={"iconImage"} src={checkList} alt={'shopping list'}/>
                             </button>
-
+                        </div>
                         </form>
                     </div>
-                </div>
+                    </div>
+
             </div>
 
         </>

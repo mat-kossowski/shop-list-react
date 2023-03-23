@@ -32,12 +32,10 @@
 }
 
 .productOfListContainer {
-    padding-bottom: 40px;
-    position: sticky;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    transition: 0.5s;
+    width: 100%;
+    margin: auto auto 30px;
+
+
 }
 
 @media (max-width: 991px) {
@@ -55,68 +53,275 @@
 }
 
 
-
 .headCategory {
     display: flex;
     width: 100%;
     padding-bottom: 1px;
 }
 
-.collectionProducts {
-    width: 618px;
-    background: #FFFFFF;
-    border-radius: 28px 28px 28px 28px;
-    border: solid #282c34;
-    height: 100%;
-    margin-bottom: 2px;
+
+
+.WrapperContainer .OuterBox h1{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #737575;
 }
-button{
+.emptyList{
+
+}
+.emptyList p{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 78px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #737575;
+}
+@media (max-width: 1008px) {
+    .WrapperContainer .OuterBox h1{
+        font-size: 50px;
+    }
+    .emptyList p{
+        font-size: 30px;
+    }
+}
+
+
+button {
     border: 0;
     background: #4B6452;
 }
-.buttonSortProduct{
+
+.buttonSortProduct {
     margin-top: 30px;
     margin-bottom: 30px;
-    border-radius: 28px 28px 28px 28px;
-    border: solid #282c34;
+
     padding: 3px;
 }
-.product{
-    width: 100%;
-    display: flex;
-    padding-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.collectionProducts {
+    width: 700px;
+    margin: auto;
 }
-.productDiv {
-    text-align: left;
-    width: 40%;
-    float: left;
+
+.product {
+    width: 100%;
+    height: 50px;
+    border-radius: 15px 15px 15px 15px;
+    border: solid #D9D9D9 2px;
+    margin-top: -3px;
+    background: #FFFFFF;
+
 
 }
+.product button{
+
+}
+.product input,
+.product p{
+    height: 37px;
+    width: 100%;
+    text-align: center;
+    padding-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+margin: 0;
+}
+
+.productName {
+    border-right: solid #D9D9D9 2px;
+    display: flex;
+    width: 44%;
+    float: left;
+    justify-content: center;
+    padding: 5px;
+    overflow: auto;
+}
+.productName p{
+    overflow-wrap: break-word;
+}
+.product .productAmount{
+padding: 5px;
+    border-right: solid #D9D9D9 2px;
+    width: 8%;
+    float: left;
+    display: flex;
+    text-align: center;
+}
+.product .productAmount p
+{
+    text-align: center;
+    border: solid #61B449 1px;
+    border-radius: 15px;
+    text-transform: capitalize;
+
+}
+.product .productUnit{
+    padding: 5px;
+    border-right: solid #D9D9D9 2px;
+    width: 8%;
+    float: left;
+    display: flex;
+    text-transform: capitalize;
+}
+.product .updateProduct{
+height: 46px;
+    border-right: solid #D9D9D9 2px;
+    width: 8%;
+    float: left;
+    display: flex;
+    padding-left: 7px;
+}
+.updateProduct button{
+    background: none;
+    height: 45px;
+}
+
+.deleteProductNew{
+    height: 46px;
+    border-right: solid #D9D9D9 2px;
+    width: 8%;
+    float: left;
+    display: flex;
+    padding-left: 4px;
+}
+.deleteProductNew button{
+background: none;
+    height: 45px;
+}
+.categoryProductNew{
+
+    display: flex;
+    width: 24%;
+    justify-content: center;
+    padding: 5px;
+}
+
+.addNewProduct{
+    width: 100px;
+    height: 100px;
+    margin: 50px 0 0;
+    background: #61B449;
+    box-shadow: 0px 25px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    padding-left: 7px;
+
+}
+@media (max-width: 960px) {
+    .collectionProducts {
+        width: 360px;
+    }
+    .product{
+        height: 30px;
+    }
+    .product p{
+        padding-top: 0;
+        height: 20px;
+        font-size: 10px;
+    }
+    .productName {
+        padding: 4px;
+        width: 44%;
+
+    }
+    .productName p{
+
+    }
+    .product .productAmount{
+        padding: 4px;
+        width: 8%;
+
+    }
+    .product .productAmount p
+    {
+
+        border: none;
+
+
+    }
+    .product .productUnit{
+        padding: 4px;
+        width: 8%;
+
+    }
+    .product .updateProduct{
+        padding-left: 2px;
+        width: 8%;
+        height: 26px;
+    }
+    .updateProduct button{
+        height: 24px;
+    }
+    .updateProduct button img{
+        height: 24px;
+    }
+    .deleteProductNew{
+        padding-left: 1px;
+        width: 8%;
+        height: 26px;
+
+    }
+    .deleteProductNew button img{
+        height: 24px;
+    }
+    .deleteProductNew button{
+        height: 24px;
+    }
+    .categoryProductNew{
+
+
+        width: 24%;
+
+    }
+}
+
 .inputProductAmount {
     text-align: left;
     width: 10%;
     float: left;
 
 }
+
 .inputProductUnit {
     text-align: left;
     width: 10%;
     float: left;
 
 }
+
 .productDiv p {
     margin: 0;
 }
-.myIconsProduct{
+
+.myIconsProduct {
     width: 40%;
     margin-left: 0;
     margin-right: 15px;
     text-align: right;
 
 }
-.myIconProduct{
+
+.myIconProduct {
     width: 30px;
     height: 30px;
     text-align: center;
@@ -129,13 +334,15 @@ button{
 
 
 }
-.iconImageProduct{
+
+.iconImageProduct {
 
     height: 24px;
     margin: 3px;
 
 }
-.myIconCategory{
+
+.myIconCategory {
 
     height: 30px;
     text-align: center;
@@ -148,11 +355,13 @@ button{
     color: white;
     padding: 2px 5px 2px 5px;
 }
-.buttonEdit{
+
+.buttonEdit {
     width: 20%;
     float: left;
 }
-.buttonDelete{
+
+.buttonDelete {
     width: 20%;
 
 }
@@ -160,15 +369,332 @@ button{
 ul {
     list-style-type: none;
 }
-li{
+
+li {
     width: 100%;
     text-align: left;
 }
-.sortProduct{
+
+.sortProduct {
     width: 100%;
 
 
 }
-.containerOfProduct{
+
+.containerOfProduct {
     width: 100%;
+}
+
+.WrapperContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.WrapperContainer .InnerBox {
+    width: 960px;
+    margin: auto;
+}
+
+.WrapperContainer .InnerBox .listName {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 50px;
+    color: #FFFFFF;
+    background: #61B449;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.WrapperContainer .InnerBox .listName h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin: auto;
+}
+
+.WrapperContainer .newProductFormBox {
+    width: 960px;
+    height: 70px;
+    margin: auto;
+}
+
+.WrapperContainer .newProductForm {
+    width: 100%;
+    background: #f5f5f5;
+    border-radius: 15px 15px 15px 15px;
+
+}
+
+.WrapperContainer .newProductForm .inputProductName {
+    height: 70px;
+    width: 45%;
+    float: left;
+    display: flex;
+    text-align: center;
+
+}
+
+.WrapperContainer .newProductForm input {
+    text-align: center;
+    padding-top: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+
+}
+.WrapperContainer .newProductForm .inputProductName input{
+    font-size: 25px;
+}
+
+.WrapperContainer .newProductForm .inputProductAmount {
+    height: 70px;
+    width: 10%;
+    float: left;
+    display: flex;
+    padding: 5px;
+}
+
+.WrapperContainer .newProductForm .inputProductAmount input {
+    border: solid #61B449 1px;
+    border-radius: 15px;
+
+    padding-top: 6px;
+
+}
+
+.WrapperContainer .newProductForm .inputProductUnit {
+height: 70px;
+    width: 6.666%;
+    float: left;
+    display: flex;
+    text-align: center;
+    background-image: url("../image/bag.png");
+    background-size: cover;
+
+
+}
+
+.WrapperContainer .newProductForm .inputProductUnit input {
+    width: 100%;
+
+    margin: 0;
+    background-image: url("../image/bag.png");
+    background-size: cover;
+    text-align: center;
+    padding-top: 6px;
+
+
+}
+
+/*}*/
+.WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill,
+.WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill:hover,
+.WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill:focus {
+
+    width: 38px;
+    height: 28px;
+margin-top: 25px;
+    margin-left: 15px;
+    padding-top: 0;
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0 40rem #f5f5f5 inset;
+
+}
+
+.WrapperContainer .newProductForm .inputProductCategory {
+    height: 70px;
+    width: 28.334%;
+    float: left;
+    display: flex;
+    text-align: center;
+}
+
+.WrapperContainer .newProductForm .inputProductCategory input {
+    width: 100%;
+    color: #0fa739;
+
+}
+
+/*#mui-component-select-category{*/
+/*    width: 220px;*/
+/*}*/
+.MuiFormControl-root {
+    width: 100%;
+    text-align: center;
+}
+
+.MuiInputBase-root {
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+#demo-simple-select-label {
+    text-align: center;
+    color: #0fa739;
+    padding-left: 65px;
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+#menu-category > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li{
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    padding-left: 25px;
+}
+
+.WrapperContainer .newProductForm .buttonProduct {
+    height: 70px;
+    width: 10%;
+    border-radius: 0 15px 15px 0;
+    display: flex;
+}
+
+.WrapperContainer .newProductForm button {
+    width: 100%;
+    border-radius: 15px 15px 15px 15px;
+    background: #61B449;
+    color: #f5f5f5;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal;
+    font-weight: 700;
+
+}
+@media (max-width: 960px) {
+    .WrapperContainer .newProductFormBox {
+        width: 360px;
+        height: 35px;
+
+    }
+    .WrapperContainer .newProductForm input {
+        font-size: 10px;
+        line-height: 1px;
+    }
+    .WrapperContainer .newProductForm .inputProductName {
+        width: 40%;
+        height: 35px;
+    }
+    .WrapperContainer .newProductForm .inputProductName input{
+        padding: 0;
+        font-size: 10px;
+    }
+    .WrapperContainer .newProductForm .inputProductAmount {
+        width: 15%;
+        height: 35px;
+    }
+    .WrapperContainer .newProductForm .inputProductAmount input {
+        border-radius: 5px;
+        padding-top: 0px;
+    }
+    .WrapperContainer .newProductForm .inputProductUnit {
+        height: 35px;
+        background-image: none;
+        width: 15%;
+        padding: 5px;
+
+    }
+    .WrapperContainer .newProductForm .inputProductUnit input{
+        border: solid #61B449 1px;
+        border-radius: 5px;
+        background-image: none;
+        padding-top: 0px;
+
+    }
+    .WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill,
+    .WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill:hover,
+    .WrapperContainer .newProductForm .inputProductUnit input:-webkit-autofill:focus {
+
+        height: 28px;
+        margin-top: 0px;
+        margin-left: 0px;
+
+
+    }
+
+    .WrapperContainer .newProductForm .inputProductCategory {
+        height: 35px;
+        width: 25%;
+        justify-content: center;
+
+    }
+    .WrapperContainer .newProductForm .buttonProduct {
+        height: 35px;
+        width: 5%;
+padding-top: 7px;
+
+    }
+    .WrapperContainer .newProductForm button {
+        height: 20px;
+        border-radius: 20px 20px 20px 20px;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    #demo-simple-select-label {
+        padding-left: 0;
+        font-size: 10px;
+        text-align: center;
+        justify-content: center;
+        padding-bottom: 10px;
+
+    }
+    .MuiFormControl-root {
+        padding-bottom: 10px;
+        justify-content: center;
+        margin: 0;
+    }
+    #demo-simple-select-standard{
+        font-size: 10px;
+    }
+
+    #root > div > div.WrapperContainer > div.newProductFormBox > div > form > div.inputProductCategory > div > div{
+        margin: 0;
+    }
+
+    #menu-category > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li{
+        font-size: 10px;
+    }
+    .WrapperContainer .OuterBox h1{
+        font-size: 30px;
+    }
+    .WrapperContainer .InnerBox {
+        width: 360px;
+
+        margin: auto;
+    }
+
+    .WrapperContainer .InnerBox .listName {
+height: 35px;
+
+
+    }
+    .WrapperContainer .InnerBox .listName h2{
+        font-size: 25px;
+    }
+}
+@media (max-width: 472px) {
+    .WrapperContainer .OuterBox h1{
+        font-size: 23px;
+    }
 }

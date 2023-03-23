@@ -12,7 +12,7 @@ export default function Start() {
                 {context.userName ?
 
                     <Link to={"/shopList/new"}>
-                        <button className={"NewListButton"}>Nowa Lista Zakupów</button>
+                        <button className={"NewListButton"}>Lista Zakupów</button>
                     </Link>
 
                     :

@@ -14,7 +14,7 @@ const getProduct = (productId, shopListId) => {
     return axios.get(API_URL + +"/"+shopListId+"/" + productId);
 };
 
-const addProduct = (shopListId,{productName,productAmount,category }) => {
+const addProduct = (shopListId,{productName,productAmount,productUnit,category }) => {
     let customConfig = {
         headers: {
             'Content-Type': 'application/json'
@@ -23,6 +23,7 @@ const addProduct = (shopListId,{productName,productAmount,category }) => {
     let json = JSON.stringify({
         productName: productName,
         productAmount: productAmount,
+        productUnit: productUnit,
         category: category
 
     })

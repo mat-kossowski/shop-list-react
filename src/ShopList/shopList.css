@@ -1,9 +1,10 @@
-.containerOfShopLists{
-   width: 100%;
+.containerOfShopLists {
+    width: 100%;
     text-align: center;
 
 }
-.boxOfShopLists{
+
+.boxOfShopLists {
     margin: auto;
     width: 960px;
     height: 50px;
@@ -11,19 +12,21 @@
 
 
 }
-.containerOfShopLists .titleList h1{
-    font-family: 'Montserrat' ,sans-serif;
+
+.containerOfShopLists .titleList h1 {
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 64px;
     line-height: 78px;
     text-align: center;
     letter-spacing: 0.1em;
-padding-top: 30px;
+    padding-top: 30px;
     padding-bottom: 30px;
     color: #737575;
 }
-.containerOfShopLists button{
+
+.containerOfShopLists button {
     width: 370px;
     height: 100px;
     font-family: 'Montserrat', sans-serif;
@@ -34,7 +37,7 @@ padding-top: 30px;
     /* identical to box height */
     text-align: center;
     letter-spacing: 0.1em;
-margin-bottom: 50px;
+    margin-bottom: 50px;
     color: #FFFFFF;
 
 
@@ -44,7 +47,7 @@ margin-bottom: 50px;
 
 }
 
-.boxOfShopLists a{
+.boxOfShopLists a {
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -55,6 +58,7 @@ margin-bottom: 50px;
     overflow-wrap: break-word;
 
 }
+
 .containerOneShopList {
     position: relative;
     display: flex;
@@ -75,7 +79,8 @@ margin-bottom: 50px;
     margin-bottom: 15px;
     padding-top: 7px;
 }
-.oneShopList{
+
+.oneShopList {
     justify-content: center;
     position: absolute;
     width: 100%;
@@ -84,16 +89,18 @@ margin-bottom: 50px;
     margin: 0;
 
 }
-.containerOneShopList h3{
+
+.containerOneShopList h3 {
 
     color: white;
     font-family: 'Montserrat', cursive;
     width: 100%;
-
+    font-weight: 400;
+    font-size: 25px;
     overflow-wrap: break-word;
 }
 
-.shopListName{
+.shopListName {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,10 +112,11 @@ margin-bottom: 50px;
     font-weight: 400;
     font-size: 40px;
     color: #FFFFFF;
-padding-left: 15px;
+    padding-left: 15px;
 
 }
-.oneShopList .myIconsProduct{
+
+.oneShopList .myIconsProduct {
     display: flex;
     margin-right: 15px;
     float: left;
@@ -116,72 +124,281 @@ padding-left: 15px;
     text-align: left;
 
 }
-.oneShopList .myIconsProduct .myIcon{
+
+.oneShopList .myIconsProduct .myIcon {
     width: 36px;
     height: 36px;
 
 }
-.oneShopList .myIconsProduct .iconImage{
+
+.oneShopList .myIconsProduct .iconImage {
     height: 29px;
     margin: 3px;
 
 }
-.formList{
+
+.formList {
     width: 100%;
     display: flex;
 
 }
-.formList input{
+
+.formList input {
     width: 100%;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
+
+    font-size: 20px;
+    font-weight: 400;
     letter-spacing: 1px;
     transition: 0.5s;
-    font-family: Inter, sans-serif;
-height: 36px;
-    margin:0;
-    padding-left: 5px;
+    font-family: 'Montserrat', sans-serif;
+    height: 36px;
+    margin: 0;
+    text-align: center;
     color: #737575;
+    cursor: text;
 }
+
 @media (max-width: 882px) {
-    .boxOfShopLists{
+    .boxOfShopLists {
         width: 400px;
     }
 
     .containerOneShopList {
-
         margin-left: 0;
-
         margin-bottom: 15px;
         padding-top: 7px;
     }
-
 
 
 }
+
 @media (max-width: 444px) {
-    .boxOfShopLists{
+    .boxOfShopLists {
         width: 350px;
     }
-
     .containerOneShopList {
         width: 350px;
         margin-left: 0;
-
         margin-bottom: 15px;
         padding-top: 7px;
     }
-    .containerOfShopLists button{
+    .containerOfShopLists button {
         width: 280px;
         height: 60px;
         font-size: 25px;
-
-
     }
-    .containerOfShopLists .titleList h1{
-
+    .containerOfShopLists .titleList h1 {
         font-size: 45px;
+    }
+}
+
+.pageName h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #737575;
+}
+
+.entrusting {
+    width: 100%;
+    text-align: center;
+
+}
+
+.entrusting .entrustingBox {
+    width: 960px;
+    margin: auto;
+
+}
+
+
+.entrusting .entrustingBox .listName {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 50px;
+    color: #FFFFFF;
+    background: #61B449;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+
+}
+
+.entrusting .entrustingBox .listName h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin: auto;
+}
+
+
+
+.entrusting .entrustingBox .entrustingForm {
+    width: 100%;
+
+}
+
+.entrusting .entrustingBox .entrustingForm input {
+    height: 70px;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    /*margin: auto;*/
+    text-align: center;
+    /*padding-left: 440px;*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+}
+
+.entrusting .entrustingBox .entrustingForm button {
+    width: 150px;
+    height: 120px;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin: 50px auto auto;
+    background: #61B449;
+}
+
+.entrusting .entrustingBox .entrustingForm button .iconImage {
+    height: 80px;
+    margin: auto;
+}
+@media (max-width: 960px) {
+    .entrusting .entrustingBox {
+        width: 440px;
 
     }
+    .pageName h1 {
+        font-size: 32px;
+    }
+    .entrusting .entrustingBox .listName {
+        height: 45px;
+        font-size: 20px;
+    }
+    .entrusting .entrustingBox .entrustingForm input {
+        height: 45px;
+        font-size: 20px;
+    }
+    .entrusting .entrustingBox .entrustingForm button {
+        width: 75px;
+        height: 60px;
+    }
+    .entrusting .entrustingBox .entrustingForm button .iconImage {
+        height: 40px;
+    }
+}
+@media (max-width: 440px) {
+    .entrusting .entrustingBox {
+        width: 300px;
+
+    }
+    .pageName h1 {
+        font-size: 32px;
+    }
+    .entrusting .entrustingBox .listName {
+        height: 45px;
+        font-size: 20px;
+    }
+    .entrusting .entrustingBox .entrustingForm input {
+        height: 45px;
+        font-size: 20px;
+    }
+    .entrusting .entrustingBox .entrustingForm button {
+        width: 75px;
+        height: 60px;
+    }
+    .entrusting .entrustingBox .entrustingForm button .iconImage {
+        height: 40px;
+    }
+}
+
+.wrapper-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 78px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #737575;
+}
+
+.wrapper-container .inner-box {
+    width: 960px;
+    margin: auto;
+
+}
+@media (max-width: 960px) {
+    .wrapper-container .inner-box {
+        width: 360px;
+        height: 50px;
+    }
+    .wrapper-container h1{
+        font-size: 30px;
+    }
+    .newListFrom .inputList,
+    .newListFrom .buttonList
+    {
+        height: 50px;
+    }
+}
+
+
+.wrapper-container .inner-box .newListFrom {
+
+    width: 100%;
+}
+
+.wrapper-container .inner-box .newListFrom .inputList {
+    height: 70px;
+    width: 90%;
+    float: left;
+    display: flex;
+
+}
+
+.wrapper-container .inner-box .newListFrom .buttonList {
+    height: 70px;
+    width: 10%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border-radius: 0 15px 15px 0;
+    background: #f5f5f5;
+}
+
+.wrapper-container .inner-box .newListFrom button {
+
+    width: 100%;
+    border-radius: 15px 15px 15px 15px;
+    background: #61B449;
+}
+.wrapper-container .inner-box .newListFrom input {
+    text-align: center;
+    background: #f5f5f5;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 15px 0 0 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
 }

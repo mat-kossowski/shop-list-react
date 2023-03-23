@@ -1,0 +1,71 @@
+.productOdListContainer{
+    width: 100%;
+    text-align: center;
+}
+.OuterBox h1{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #737575;
+}
+.sortProductBox{
+    width: 400px;
+    margin: auto;
+}
+.sortProduct{
+
+}
+
+.sortName{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 70px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    background: #61B449;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 38px;
+}
+.sortName h1{
+    padding-top: 10px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+}
+.sortProduct .buttonSortProduct{
+    margin-top: 5px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+    color: #FFFFFF;
+    background: #61B449;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 38px;
+}
+@media (max-width: 960px) {
+    .sortProductBox{
+        width: 360px;
+    }
+    .sortName{
+        width: 360px;
+    }
+    .sortProduct .buttonSortProduct{
+        width: 180px;
+    }
+}
