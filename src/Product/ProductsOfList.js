@@ -61,7 +61,7 @@ const ProductsOfList = () => {
     const clickSortCategory = appService.clickSortCategory(setSortAlphabet, setList, list)
     const clickStatusProduct = appService.clickStatusProduct(setList, sortAlphabet, list)
     const clickDeleteItem = appService.clickDeleteItem(setList, list)
-    console.log(list.length)
+
 
     return (
         <div className={"productOdListContainer"}>
